@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="lib/template-web.js"></script>
+    <style>
+        .news-item {
+            width: 800px;
+            height: 200px;
+            border: 1px solid gainsboro;
+            padding: 15px;
+        }
+        
+        .thumb {
+            height: 200px;
+            width: 300px;
+            background-color: gold;
+        }
+        
+        .right-box {
+            height: 200px;
+            width: 500px;
+            position: relative;
+        }
+        
+        .thumb,
+        .right-box {
+            float: left;
+        }
+        
+        .tags span {
+            display: block;
+            background-color: gainsboro;
+            border-radius: 50px;
+            float: left;
+            padding: 2px;
+            margin-left: 10px;
+            margin-top: 50px;
+            padding: 0 2px;
+        }
+        
+        .footer {
+            position: absolute;
+            top: 180px;
+            height: 20px;
+            width: 100%;
+        }
+        
+        .footer div {
+            width: 400px;
+        }
+        
+        .footer div span {
+            display: block;
+            float: left;
+            margin-left: 10px;
+        }
+        
+        .footer>span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: block;
+        }
+        
+        h1 {
+            font-size: 20px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news-list">
+
+    </div>
+    <script type="text/html" id='tpl-news'>
+        {{each data}}
+        <div class=" news-item ">
+            <img class="thumb " src="{{'http://www.liulongbin.top:3006'+$value.img}}" alt=" ">
+            <div class="right-box ">
+                <h1 class="title ">{{$value.title}}</h1>
+                <div class="tags ">
+                    <span>中国联通</span><span>中国移动</span><span>中国电信</span>
+                </div>
+                <div class="footer ">
+                    <div>
+                        <span>{{$value.source}}</span>
+                        <span>{{$value.time|formate}}</span>
+                    </div>
+                    <span>评论数：{{$value.cmtcount}}</span>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+    </script>
+</body>
+
+<script src="js/new.js"></script>
+
+</html>

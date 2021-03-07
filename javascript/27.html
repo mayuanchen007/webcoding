@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+        
+        .box img {
+            width: 300px;
+            height: 300px;
+            margin: 50px 50px;
+        }
+        
+        .mask {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #FEDE4F;
+            opacity: .5;
+            cursor: move;
+        }
+        
+        .big {
+            display: none;
+            position: fixed;
+            left: 410px;
+            top: 8px;
+            width: 700px;
+            height: 700px;
+            background-color: pink;
+            overflow: hidden;
+        }
+        
+        .big img {
+            top: 0;
+            left: 0;
+            width: 900px;
+            height: 900px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img id="small" src="img/4.jpg" alt="">
+        <div class="mask"></div>
+    </div>
+    <div class="big"><img src="img/4.jpg" alt="" id="bigimg">
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        var mask = document.querySelector(".mask");
+        var big = document.querySelector(".big");
+        var bigimg = document.querySelector("#bigimg");
+        box.addEventListener("mouseover", function() {
+            mask.style.display = "block";
+            big.style.display = "block";
+        });
+        box.addEventListener("mouseout", function() {
+            mask.style.display = "none";
+            big.style.display = "none";
+        });
+        box.addEventListener("mousemove", function(e) {
+            var x = e.pageX - box.offsetLeft;
+            var y = e.pageY - box.offsetTop;
+            maskY = y - mask.offsetHeight / 2;
+            maskX = x - mask.offsetWidth / 2;
+            maskX > 200 ? mask.style.left = '200px' : mask.style.left = maskX + "px";
+            maskX < 0 ? mask.style.left = '0px' : mask.style.left = maskX + "px";
+            maskY > 200 ? mask.style.top = '200px' : mask.style.top = maskY + "px";
+            maskY < 0 ? mask.style.top = '0px' : mask.style.top = maskY + "px";
+            if (maskY > 200) {
+                mask.style.top = '200px'
+            }
+            if (maskX > 200) {
+                mask.style.left = '200px'
+            }
+            var bigX = bigimg.offsetWidth - big.offsetWidth; //大盒子移动最大距离
+            var bigY = bigimg.offsetTop - big.offsetTop;
+            var a = -bigX * maskX / (small.offsetWidth - mask.offsetWidth);
+            var b = -bigY * maskY / (small.offsetHeight - mask.offsetHeight);
+            bigimg.style.left = a + "px";
+            bigimg.style.top = b + "px";
+            console.log(b);
+
+        });
+    </script>
+</body>
+
+</html>

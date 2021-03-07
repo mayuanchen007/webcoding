@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            height: 113px;
+            width: 810px;
+            margin: 250px auto;
+            /* background-color: #ffffff; */
+            padding-top: 3px;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            margin: auto 1px;
+            cursor: pointer;
+        }
+        
+        ul li img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        
+        img:hover {
+            transform: scale(1.1);
+        }
+        
+        body {
+            background: url("img/06.jpg") no-repeat center top fixed;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+
+<body>
+    <ul class="baidu">
+        <li><img src="img/wallhaven-740118.jpg"> </li>
+        <li><img src="img/wallhaven-740544.jpg"></li>
+        <li><img src="img/wallhaven-740933.jpg"></li>
+        <li><img src="img/wallhaven-741076.jpg"></li>
+    </ul>
+    <script>
+        var imgs = document.querySelector(".baidu").querySelectorAll("img");
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function() {
+                var url = this.src;
+                document.body.style.backgroundImage = "url(" + url + ")";
+            }
+        }
+    </script>
+</body>
+
+</html>

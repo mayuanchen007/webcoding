@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+    <script>
+        var ol = document.querySelector("ol");
+        var firstE = ol.firstElementChild;
+        var lis = ol.children;
+        var one = lis[0]; //第一个
+        console.log(one);
+        var last = lis[lis.length - 1]; //最后一个
+        console.log(last);
+    </script>
+</body>
+
+</html>

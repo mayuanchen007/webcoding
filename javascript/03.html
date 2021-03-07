@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数创建对象</title>
+    <script>
+        function Star(name, age, sing) {
+            this.name = name;
+            this.age = age;
+            this.say = function(sing) {
+                console.log(sing);
+            }
+        }
+        var zxy = new Star("张学友", "58", "黑猫警长"); //"黑猫警长" 的参数不会传到say方法中
+        zxy.say(); //这样写console.log(sing); 中sing会报错undefined
+        //必须这样写才可以
+        zxy.say("黑猫警长");
+        for (var k in zxy) {
+            console.log(zxy[k]);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        body {
+            background-color: rgb(238, 238, 238);
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .sp img {
+            width: 1170px;
+            height: 537px;
+        }
+        
+        .yhh img {
+            width: 1170px;
+            height: 412px;
+        }
+        
+        .mrhd img {
+            width: 1170px;
+            height: 500px;
+        }
+        
+        .rmdp img {
+            width: 1170px;
+            height: 900px;
+        }
+        
+        .cnxh img {
+            width: 1170px;
+            height: 3500px;
+        }
+        
+        .jdt {
+            position: fixed;
+            right: 200px;
+            top: 200px;
+        }
+        
+        ul {
+            display: none;
+            width: 50px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        
+        li {
+            margin-left: 1px;
+            list-style: none;
+            width: 50px;
+            height: 55px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 24px;
+            border-top: 1px solid orange;
+        }
+        
+        li:hover {
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: orange;
+            color: white;
+        }
+        
+        .first {
+            border-top: none;
+        }
+        
+        .divtop {
+            height: 200px;
+        }
+        
+        .current {
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: orange;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jdt">
+            <ul>
+                <li class="first">品质好货</li>
+                <li>好店直播</li>
+                <li>实惠热卖</li>
+                <li class="last">猜你喜欢</li>
+                <li class="last">返回顶部</li>
+            </ul>
+        </div>
+        <div class="divtop row"></div>
+        <div class="row sp">
+            <img src="img/sp.png" alt="">
+        </div>
+        <div class="row yhh">
+            <img src="img/yhh.png" alt="">
+        </div>
+        <div class="row mrhd">
+            <img src="img/mrhd.png" alt="">
+        </div>
+        <div class="row rmdp">
+            <img src="img/rmdp.png" alt="">
+        </div>
+        <div class="row cnxh">
+            <img src="img/cnxh.png" alt="">
+        </div>
+        <script>
+            $(function() {
+                var flag = true;
+                var top = $(".sp").offset().top;
+                console.log(top);
+                $(window).scroll(function() {
+
+                    if ($(document).scrollTop() > top) {
+                        $("ul").fadeIn();
+                    } else {
+                        $("ul").fadeOut();
+                    }
+                    if (flag) {
+                        $(".container div").each(function(i, ele) {
+                            if (i > 2) {
+                                if (i == 3) {
+                                    if ($(document).scrollTop() > $("li:eq(1)").offset().top) {
+                                        $("li:eq(1)").addClass("current").siblings().removeClass("current");
+                                    }
+                                }
+                                console.log(i);
+                                var a = $(ele).offset().top;
+                                console.log($(document).scrollTop());
+                                if ($(document).scrollTop() >= a) {
+                                    $("li").eq(i - 2).addClass("current").siblings().removeClass("current");
+                                }
+                            }
+                        });
+                    }
+
+                });
+                $("li").click(function() {
+                    flag = false;
+                    var index = $(this).index();
+                    console.log(index);
+                    if (index === 4) {
+                        $("body,html").stop().animate({
+                            scrollTop: 0
+                        }, 2000);
+                    } else {
+                        var current = $(".container div").eq(index + 3).offset().top;
+                        console.log(current);
+                        $("body,html").stop().animate({
+                            scrollTop: current
+                        }, function() {
+                            flag = true;
+                        });
+                    }
+                    $(this).addClass("current").siblings().removeClass("current");
+                });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

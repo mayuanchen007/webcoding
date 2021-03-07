@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div>123</div>
+    <input type="text" value="456">
+    <script>
+        //1.获取div内容
+        var div = $("div").html();
+        console.log(div); //123
+        //2.设置div内容
+        $("div").html("<h1>123<h1>"); //123
+        //3.普通文本不解析html标签
+        $("div").text("<h1>123<h1>"); //<h1>123<h1>
+        //4.获取表单元素的值
+        var input = $("input").val();
+        console.log(input); //456
+        //5.设置表单元素的值
+        $("input").val("ahha"); //ahha
+    </script>
+</body>
+
+</html>

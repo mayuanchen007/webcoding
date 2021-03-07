@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+        [class^="col"] {
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <script>
+        // var age = prompt("请输入您的年龄");
+        // alert("您今天" + age + "岁了");
+        var a = null;
+        if (a == false) { //不输出
+            alert(1);
+        }
+        var b = undefined;
+        if (b) { //不输出
+            alert(2);
+        }
+        var c = NaN;
+        if (c) { //不输出
+            alert(3);
+        }
+        var d = "";
+        if (d) { //不输出
+            alert(4);
+        }
+        alert(NaN == NaN); //false
+        alert(undefined == b); //true
+        alert('' == null); //false
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-md-push-9">左侧</div>
+            <div class="col-md-9 col-md-pull-3">右侧</div>
+        </div>
+    </div>
+</body>
+
+</html>

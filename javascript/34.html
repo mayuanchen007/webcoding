@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">按钮</button>
+</body>
+<script>
+    var arr = [1, 2, 3, 4, 5, 6];
+    arr.forEach(function(index, value, array) {
+        console.log(index); //数组下标
+        console.log(value); //数组值
+        console.log(array); //数组对象
+    });
+    //     console.log(arr);
+    //     var newArray = arr.filter(function(value, index, array) {
+    //         console.log(array); //数组对象
+    //         return value > 2;
+    //     });
+    //     console.log(newArray); //[5,6]
+    //
+    var we = ' 我  们 ';
+    console.log(we.trim()); //34.html:29 我  们
+    var stu = {
+        name: 'myc',
+        age: 25
+    };
+    var stuArr = Object.keys(stu);
+    console.log(stuArr); //34.html:35 (2) ["name", "age"]
+    delete stu.name;
+    console.log(stu); //34.html:37 {age: 25}
+    //1.普通函数
+    function fn() {
+        console.log('普通函数');
+    }
+    fn();
+    //2.对象方法
+    var people = {
+        sing: function() {
+            console.log("方法函数");
+        }
+    }
+    people.sing();
+    //3.构造函数
+    function Star() {
+        console.log("构造函数");
+    }
+    new Star();
+    //4.绑定事件
+    document.querySelector('.btn').onclick = function() {
+        console.log('绑定函数');
+    }
+    document.querySelector('.btn').onclick(); //或者点击按钮
+    //5.定时器函数
+    setInterval(function() {
+        console.log('定时器函数');
+    }, 5000);
+    //6.自动调用函数
+    (function() {
+        console.log('自动调用函数');
+    })();
+</script>
+
+</html>

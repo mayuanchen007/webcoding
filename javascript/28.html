@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .header {
+            height: 200px;
+            background-color: burlywood;
+        }
+        
+        .banner {
+            height: 800px;
+            background-color: cyan;
+        }
+        
+        .main {
+            height: 2000px;
+            background-color: darkturquoise;
+        }
+        
+        .slider-bar {
+            float: right;
+            width: 80px;
+            height: 100px;
+            background-color: forestgreen;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            top: 550px;
+            right: 366px;
+        }
+        
+        .goBack {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="container">
+        <div class="header"></div>
+        <div class="banner"></div>
+        <div class="main"></div>
+    </div>
+    <script>
+        var sliderBar = document.querySelector(".slider-bar");
+        var header = document.querySelector(".header");
+        var banner = document.querySelector(".banner");
+        var goBack = document.querySelector(".goBack");
+        var s = sliderBar.offsetTop;
+        document.addEventListener("scroll", function() {
+            var y = window.pageYOffset;
+            console.log(s);
+            console.log(y);
+            if (y > 300) {
+                sliderBar.style.position = "fixed";
+                sliderBar.style.top = "0px";
+                goBack.style.display = "block";
+            } else {
+                sliderBar.style.position = "absolute";
+                sliderBar.style.top = s - y + "px";
+                goBack.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>

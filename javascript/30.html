@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+        
+        .box {
+            height: 300px;
+            width: 500px;
+            overflow: hidden;
+            position: relative;
+            margin: auto;
+            background-color: blue;
+        }
+        
+        .box .nr {
+            position: absolute;
+            padding-left: 0;
+            width: 500%;
+            height: 300px;
+            margin: 0;
+        }
+        
+        .box .nr li {
+            float: left;
+            height: 300px;
+            list-style: none;
+        }
+        
+        img {
+            height: 300px;
+            width: 500px;
+        }
+        
+        .bar {
+            padding: 0;
+            position: absolute;
+            top: 257px;
+            left: 205px;
+        }
+        
+        .bar li {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            float: left;
+            border: 3px solid yellow;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        
+        .pre {
+            display: none;
+            position: absolute;
+            top: 126px;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border: 3px solid yellow;
+            border-radius: 50%;
+            line-height: 30px;
+            font-size: 30px;
+            text-align: center;
+            color: yellow;
+            z-index: 100;
+        }
+        
+        .aft {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 126px;
+            width: 30px;
+            height: 30px;
+            border: 3px solid yellow;
+            border-radius: 50%;
+            line-height: 30px;
+            font-size: 30px;
+            text-align: center;
+            color: yellow;
+            z-index: 100;
+        }
+        
+        .current {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="pre">&lt;</div>
+        <div class="aft">&gt;</div>
+        <ul class="nr">
+            <li><img src="img/8.jpg"></li>
+            <li><img src="img/9.jpg"> </li>
+            <li><img src="img/10.jpg"> </li>
+            <li><img src="img/11.jpg"> </li>
+        </ul>
+        <ul class="bar">
+        </ul>
+    </div>
+    <script>
+        var box = document.querySelector(".box");
+        var pre = document.querySelector(".pre");
+        var aft = document.querySelector(".aft");
+        box.addEventListener("mouseenter", function() {
+            pre.style.display = "block";
+            aft.style.display = "block";
+        });
+        box.addEventListener("mouseleave", function() {
+            pre.style.display = "none";
+            aft.style.display = "none";
+        });
+        var nr = document.querySelector(".nr");
+        var bar = document.querySelector(".bar");
+        for (var i = 0; i < nr.children.length; i++) {
+            var li = document.createElement("li");
+            bar.appendChild(li);
+            li.addEventListener("click", function() {
+                for (var a = 0; a < nr.children.length; a++) {
+                    bar.children[a].setAttribute("index", a);
+                    bar.children[a].className = "";
+                }
+                this.className = "current";
+                var width = box.offsetWidth;
+                var index = this.getAttribute("index");
+                console.log(index);
+                console.log(width);
+                anination(nr, -index * width);
+            });
+
+
+
+        }
+        bar.children[0].className = "current";
+
+        function anination(obj, target, callback) {
+            var bc = (target - obj.offsetLeft) / 10;
+            var timer = window.setInterval(function() {
+                obj.style.left = obj.offsetLeft + bc + "px";
+                //alert(obj.offsetLeft);
+                if (obj.offsetLeft == target) {
+                    window.clearInterval(timer);
+                }
+            }, 50);
+        }
+    </script>
+</body>
+
+</html>

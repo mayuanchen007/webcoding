@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片放大</title>
+    <style>
+        div {
+            margin: 10px;
+            float: left;
+            overflow: hidden;
+        }
+        
+        div img {
+            width: 300px;
+            height: 200px;
+            transition: all 1s;
+        }
+        
+        div:hover {
+            transform: scale(1.1);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <a><img src="./img/6.jpg" /></a>
+    </div>
+    <div>
+        <a><img src="./img/6.jpg" /></a>
+    </div>
+    <div>
+        <a><img src="./img/6.jpg" /></a>
+    </div>
+</body>
+
+</html>

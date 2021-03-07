@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row"></div>
+    </div>
+    <script>
+        //1.创建元素
+        var ul = document.createElement("ul");
+        var li1 = document.createElement("li");
+        var li2 = document.createElement("li");
+        //2.添加元素 appendChild 追加  insertBefore 插入
+        var div = document.querySelector(".row");
+        div.appendChild(ul);
+        ul.appendChild(li1);
+        ul.insertBefore(li2, li1); //把 li2添加到li1之前
+        console.log(div);
+        //17.html:25 <div class=​"row">​::before​<ul>​<li>​…​</li>​<li>​…​</li>​::marker​</li>​</ul>​::after​</div>​
+    </script>
+</body>
+
+</html>

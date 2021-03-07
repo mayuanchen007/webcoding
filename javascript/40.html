@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = [1, 2, 3];
+        let b = ['a', 'b', 'c'];
+        let c = [...a, ...b];
+        console.log(c); //40.html:16 Array(6)
+        let d = a.push(...b);
+        console.log(d); //40.html:18 6
+        console.log(a); //40.html:19 (6) [1, 2, 3, "a", "b", "c"]
+        console.log(...a); //40.html:20 1 2 3 "a" "b" "c"
+    </script>
+</body>
+
+</html>

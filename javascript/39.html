@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const fn = (...args) => {
+            let sum = 0;
+            args.forEach(item => {
+                sum += item;
+            });
+            return sum;
+        }
+        const sum = fn(1, 2, 3);
+        console.log(sum); //6
+        const sum2 = fn(10, 20, 30);
+        console.log(sum2); //60
+        let student = ['鲁智深', '孙悟空', '沙和尚', '娃哈哈'];
+        let [a, ...b] = student;
+        console.log(a); //39.html:26 鲁智深
+        console.log(b); //39.html:27 (3) ["孙悟空", "沙和尚", "娃哈哈"]
+        console.log(1, 2, 3);
+    </script>
+</body>
+
+</html>

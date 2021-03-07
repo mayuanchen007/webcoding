@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //类
+    class Student {
+        //构造函数
+        constructor(name, age) {
+                this.age = age;
+                this.name = name;
+            }
+            //方法
+        saying(a) {
+            console.log('i am a' + a);
+        }
+    }
+    //创建类
+    var ldh = new Student('李德华', '8');
+    console.log("我叫" + ldh.name + '我今年' + ldh.age); //31.html:27 我叫李德华我今年8
+    ldh.saying('猪'); //31.html:23 i am a猪
+</script>
+
+</html>

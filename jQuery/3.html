@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        #title li {
+            list-style: none;
+            width: 90px;
+            height: 50px;
+            border: 1px solid rgb(204, 111, 127);
+            background-color: pink;
+            border-top: none;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        
+        #title li:hover {
+            background-color: chocolate;
+        }
+        
+        #content {
+            position: relative;
+            left: 132px;
+            top: -271px;
+            width: 450px;
+            height: 450px;
+            border: 1px solid pink;
+        }
+        
+        img {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <ul>
+            <li>
+                <a href="#">机械革命</a>
+            </li>
+            <li>
+                <a href="#">幻15</a>
+            </li>
+            <li>
+                <a href="#">微星</a>
+            </li>
+            <li>
+                <a href="#">魔霸5</a>
+            </li>
+            <li>
+                <a href="#">神舟</a>
+            </li>
+        </ul>
+        <div id="content">
+            <div>
+                <a href=""><img src="img/1.png" alt=""></a>
+            </div>
+            <div>
+                <a href=""><img src="img/2.png" alt=""></a>
+            </div>
+            <div>
+                <a href=""><img src="img/3.png" alt=""></a>
+            </div>
+            <div>
+                <a href=""><img src="img/4.png" alt=""></a>
+            </div>
+            <div>
+                <a href=""><img src="img/5.png" alt=""></a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $("#title").children("ul").children("li").mouseover(function() {
+                var index = $(this).index();
+                $("#content").children("div").eq(index).show(1000);
+                $("#content").children("div").eq(index).siblings().hide(1000);
+            });
+        });
+    </script>
+</body>
+
+</html>

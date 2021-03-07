@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        div thead tr {
+            background-color: cornsilk;
+        }
+        
+        tr td {
+            width: 33.3333333333333%;
+        }
+        
+        .bg {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>类属</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>博人</td>
+                            <td>男</td>
+                            <td>火影忍者</td>
+                        </tr>
+                        <tr>
+                            <td>路飞</td>
+                            <td>男</td>
+                            <td>航海王</td>
+                        </tr>
+                        <tr>
+                            <td>娜美</td>
+                            <td>女</td>
+                            <td>航海王&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>小五狼</td>
+                            <td>男</td>
+                            <td>名侦探柯南</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var trs = document.querySelector("tbody").querySelectorAll("tr");
+        for (var i = 0; i < trs.length; i++) {
+            //鼠标经过
+            trs[i].onmouseover = function() {
+                    this.className = "bg";
+                }
+                //鼠标离开
+            trs[i].onmouseout = function() {
+                this.className = "";
+            }
+        }
+    </script>
+</body>
+
+</html>

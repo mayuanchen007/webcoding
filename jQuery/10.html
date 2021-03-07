@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        .btn-success {
+            margin-top: 1px;
+        }
+        
+        .row div ul li .btn-danger {
+            float: right;
+            height: 20px;
+            line-height: 11px;
+            text-align: center;
+            /* font-size: 11px; */
+        }
+        
+        ul {
+            padding: 0;
+        }
+        
+        ul li {
+            width: 100%;
+            background-color: pink;
+            list-style: none;
+            border: 1px solid blueviolet;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <textarea class="form-control" rows="3"></textarea>
+                <button type="button" class="b btn btn-success">留言</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function() {
+            $(".b").on("click", function() {
+                var value = $("textarea").val();
+                if (value) {
+                    var li = $("<li></li>");
+                    li.html(value + "<button  class='btn btn-danger'>删除</button>");
+                    $("ul").prepend(li);
+                    console.log(li);
+                    li.slideDown();
+                    $("textarea").val("");
+                }
+            });
+            $("ul").on("click", ".btn-danger", function() {
+                $(this).parent().slideUp(function() {
+                    $(this).remove();
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead id="all">
+                        <tr>
+                            <th>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" id="box"> 
+                                </label>
+                            </th>
+                            <th>商品</th>
+                            <th>价格</th>
+                        </tr>
+                    </thead>
+                    <tbody id="xp">
+                        <tr>
+                            <td>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" > 
+                                </label>
+                            </td>
+                            <td>雅阁</td>
+                            <td>25w</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" > 
+                                </label>
+                            </td>
+                            <td>奥迪</td>
+                            <td>35w</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        var all = document.getElementById("all").querySelector("input");
+        var items = document.querySelector("#xp").querySelectorAll("input");
+        all.onclick = function() {
+            for (var i = 0; i < items.length; i++) {
+                items[i].checked = this.checked;
+            }
+        }
+        for (var a = 0; a < items.length; a++) {
+            items[a].onclick = function() {
+                var flag = true;
+                for (var b = 0; b < items.length; b++) {
+                    if (!items[b].checked) {
+                        flag = false;
+                        break;
+                    }
+                }
+                all.checked = flag;
+            }
+        }
+    </script>
+</body>
+
+</html>

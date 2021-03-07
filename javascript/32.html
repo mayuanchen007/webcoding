@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    class Father {
+        constructor() {
+            console.log('Father构造方法');
+        }
+        say() {
+            console.log('Father普通方法');
+        }
+    }
+    //继承父类
+    class Son extends Father {
+        constructor() {
+            //调用父类的构造方法
+            super();
+        }
+        say() {
+            //调用父类的普通方法
+            super.say();
+        }
+    }
+    var son = new Son(); //32.html:17 Father构造方法
+    son.say(); //Father普通方法
+</script>
+
+</html>

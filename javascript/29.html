@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            background-color: rgb(48, 32, 32);
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector("div");
+        var tome = setInterval(function() {
+            div.style.left = div.offsetLeft + 1 + "px";
+            if (div.offsetLeft > 500) {
+                window.clearInterval(tome);
+            }
+        }, 10);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date</title>
+    <script>
+        //1.无参
+        var date = new Date();
+        console.log(date); //Wed Dec 30 2020 22:43:55 GMT+0800 (中国标准时间)
+        //2.有参 数字型2020,12,30 或者 2020-12-30 或者 2020/12/30
+        var date1 = new Date(2020, 12, 30);
+        console.log(date1); //04.html:14 Sat Jan 30 2021 00:00:00 GMT+0800 (中国标准时间)
+        var date2 = new Date("2020-12-30 22:00:00");
+        console.log(date2); //04.html:16 Wed Dec 30 2020 22:00:00 GMT+0800 (中国标准时间)
+        var date3 = new Date("2020/01/01");
+        console.log(date3); //Wed Jan 01 2020 00:00:00 GMT+0800 (中国标准时间)
+        //获取年月日
+        var arr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        console.log(date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日 " + arr[date.getDay()]);
+        //2020年12月30日 星期三
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

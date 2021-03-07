@@ -1,0 +1,176 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    float: left;
+}
+
+.cart-filter-bar {
+    height: 18px;
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    color: red;
+    font-style: normal;
+    margin-bottom: 3px;
+}
+
+.cart-item {
+    margin-top: 5px;
+    border-top: 3px solid gray;
+    padding-top: 8px;
+}
+
+.p-img,
+.p-img img {
+    width: 152px;
+    height: 165px;
+    border: 1px solid gainsboro;
+}
+
+.cart-thead {
+    height: 50px;
+    background-color: rgb(231, 226, 226);
+    line-height: 50px;
+}
+
+.itxt {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+}
+
+.quantity-from a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: solid 1px gray;
+    text-align: center;
+}
+
+.quantity-from .decrement {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 0;
+}
+
+.quantity-from .increment {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    border-left: 0;
+}
+
+.quantity-from {
+    position: relative;
+    float: left;
+}
+
+.js-item {
+    position: relative;
+    margin-top: 8px;
+    height: 60px;
+    border: gainsboro solid 1px;
+}
+
+.js-left {
+    position: relative;
+    width: 500px;
+    height: 60px;
+}
+
+.checkbox {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    top: 9px;
+    left: 22px;
+}
+
+.xz {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    top: 0;
+    left: 100px;
+    text-align: center;
+    line-height: 60px;
+}
+
+.ql {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    top: 20px;
+    left: 237px;
+}
+
+.js-right {
+    position: relative;
+    width: 500px;
+    height: 60px;
+    float: right;
+}
+
+.qjs {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    color: white;
+    background-color: rgb(160, 10, 10);
+    top: -60px;
+    left: 401px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.qjs a {
+    color: white;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.tatolPrice {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    top: -39px;
+    right: 148px;
+}
+
+.tatolNum {
+    position: absolute;
+    width: 150px;
+    height: 60px;
+    top: -38px;
+    right: 326px;
+}
+
+.tatolNum span {
+    color: red;
+    font-weight: bolder;
+}
+
+.current-checked {
+    background-color: rgb(243, 243, 243);
+}
+
+em {
+    font-style: normal;
+}
+
+.t-action:hover {
+    cursor: pointer;
+}

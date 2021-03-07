@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>翻转</title>
+    <style>
+        /* body {
+            transform-style: preserve-3d;
+        } */
+        
+        .box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 150px auto;
+            transition: all 3s;
+            transform-style: preserve-3d;
+        }
+        
+        .box:hover {
+            transform: rotateY(180deg);
+        }
+        
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            line-height: 300px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: large;
+            color: blue;
+        }
+        
+        .front {
+            background-color: pink;
+        }
+        
+        .back {
+            background-color: orange;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="front">冬至快乐</div>
+        <div class="back">圣诞节快乐</div>
+    </div>
+</body>
+
+</html>

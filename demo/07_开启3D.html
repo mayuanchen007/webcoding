@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开启3D</title>
+    <style>
+        body {
+            perspective: 300px;
+        }
+        
+        .box {
+            position: relative;
+            margin: 200px auto;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            transition: all 2s;
+        }
+        
+        .box div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        
+        .box div:last-child {
+            background-color: royalblue;
+            transform: rotateX(60deg);
+        }
+        
+        .box:hover {
+            transform: rotateY(60deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

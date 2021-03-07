@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-2.1.0.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        .panel-heading {
+            height: 50px;
+        }
+        
+        .panel-titel {
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body style="padding: 15px;">
+    <div class="row" style="padding: 15px;">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-titel">张家口市宣化区新华书店</h3>
+            </div>
+            <div class="panel-body form-inline col-md-12" style="padding: 0;padding-top: 10px;padding-bottom: 10px;">
+                <div class="input-group col-md-3">
+                    <div class="input-group-addon">书名</div>
+                    <input type="text" class="form-control" placeholder="Search for...">
+                </div>
+                <div class="input-group  col-md-2">
+                    <div class="input-group-addon">作者</div>
+                    <input type="text" class="form-control" placeholder="Search for...">
+                </div>
+                <div class="input-group  col-md-3">
+                    <div class="input-group-addon">出版社</div>
+                    <input type="text" class="form-control" placeholder="Search for...">
+                </div>
+                <div class="input-group  col-md-3">
+                    <div class="col-md-2"><button type="button" class="btn btn-primary">查询</button></div>
+                    <div class="col-md-2"><button type="button" class="btn btn-success">新增</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="padding: 0;">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="col-md-2">id</th>
+                        <th class="col-md-3">书名</th>
+                        <th class="col-md-2">作者</th>
+                        <th class="col-md-3">出版社</th>
+                        <th class="col-md-2"> 操作</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+
+    </div>
+</body>
+<script src="./books.js"></script>
+
+</html>

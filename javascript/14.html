@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        ul {
+            padding: 0;
+        }
+        
+        ul li {
+            width: 150px;
+            height: 50px;
+            list-style: none;
+            float: left;
+            background-color: gainsboro;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        
+        ul li:hover {
+            background-color: gray;
+        }
+        
+        .bk {
+            background-color: rgb(214, 74, 74);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    <li>商品介绍</li>
+                    <li>规格与包装</li>
+                    <li>售后保障</li>
+                    <li>商品评价</li>
+                </ul>
+            </div>
+            <div class="col-md-12" id="box">
+                <div>产品名称 iPhone 12</div>
+                <div>以官网信息为准</div>
+                <div>七天之内可以退换</div>
+                <div>这是一个好商品</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var lis = document.querySelectorAll("li");
+        var boxs = document.getElementById("box").querySelectorAll("div");
+        for (var b = 0; b < boxs.length; b++) {
+            boxs[b].style.display = "none";
+        }
+        boxs[1].style.display = "block";
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].setAttribute("data-index", i);
+            lis[i].onclick = function() {
+                for (var a = 0; a < lis.length; a++) {
+                    lis[a].setAttribute("class", "")
+                }
+                this.setAttribute("class", "bk");
+                for (var b = 0; b < boxs.length; b++) {
+                    boxs[b].style.display = "none";
+                }
+                var index = this.getAttribute("data-index");
+                boxs[index].style.display = "block";
+            }
+        }
+    </script>
+</body>
+
+</html>

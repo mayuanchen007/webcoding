@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script>
+        //一个参数表示数组的长度
+        var arr1 = new Array(3);
+        console.log(arr1); // [empty × 3]
+        //多个参数表示数组同[1,2,3]
+        var arr2 = new Array(1, 2, 3);
+        console.log(arr2); // [1, 2, 3]
+        //判断是否为数组
+        //方法1： instanceof
+        var a = (arr1 instanceof Array);
+        console.log(a);
+        //方法2：Array.isArray(arg);
+        var b = Array.isArray(arr1);
+        console.log(b);
+        //添加元素
+        //尾部添加元素
+        var a = arr1.push(2);
+        console.log(a); //4 数组长度
+        //头部添加元素
+        var b = arr1.unshift(5);
+        console.log(b); //5 数组长度
+        console.log(arr1); //[5, empty × 3, 2]
+        //删除元素
+        //删除尾部元素
+        var c = arr1.pop();
+        console.log(c); //2 
+        //删除头部元素
+        var d = arr1.shift();
+        console.log(d); //5
+        var arr = [1, 11, 21, 22, 21, 32];
+        //排序
+        arr.sort(function(a, b) {
+            return a - b;
+        });
+        console.log(arr);
+        //只查找第一个返回的元素
+        var e = arr.indexOf(21);
+        console.log(e); //2
+        //转换成字符串
+        var f = arr.toString();
+        console.log(f); //05.html:48 1,11,21,21,22,32
+        //转化成特定字符串
+        var g = arr.join("-");
+        console.log(g); //05.html:51 1-11-21-21-22-32
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const a = 1;
+    //a = 2;//35.html:16 Uncaught TypeError: Assignment to constant variable
+    const arr = [1, 2];
+    // arr = ['a', 'b'];//35.html:18 Uncaught TypeError: Assignment to constant variable
+    arr[0] = 'a';
+    arr[1] = 'b';
+    console.log(arr); //["a", "b"]
+    if (1) {
+        const b = 2;
+    }
+    // console.log(b); //35.html:25 Uncaught ReferenceError: b is not defined
+    const c = 3;
+    if (1) {
+        console.log(c); //3
+    }
+    const d; //35.html:30 Uncaught SyntaxError: Missing initializer in const declaration
+</script>
+
+</html>

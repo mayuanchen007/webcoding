@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var person = {
+            'age': 15
+        }
+        var arr = Array.from(person, item => item * 2)
+        console.log(arr);
+        let objArr = [{
+            id: 1,
+            name: '小组'
+        }, {
+            id: 2,
+            name: '小猪'
+        }, {
+            id: 3,
+            name: '小炮'
+        }, {
+            id: 4,
+            name: '小强'
+        }];
+        const c = objArr.find(item => item.id == 4);
+        console.log(c); //41.html:32 {id: 4, name: "小强"}
+        const e = objArr.find(item => item.id === 5);
+        console.log(e); //41.html:34 undefined
+        var arr = [0, 1, 45, 10];
+        const f = arr.findIndex(item => item > 9);
+        console.log(f); //2
+        const v = arr.findIndex(item => item < 0);
+        console.log(v); //-1
+    </script>
+</body>
+
+</html>

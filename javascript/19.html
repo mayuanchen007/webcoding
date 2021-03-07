@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态生成表格</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        th {
+            background-color: burlywood;
+        }
+        
+        div div .table tr:last-child {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>学科</th>
+                            <th>分数</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var dates = [{
+            name: '魏璎珞',
+            project: '数学',
+            score: 98
+        }, {
+            name: '小燕子',
+            project: '语文',
+            score: 98
+        }, {
+            name: '傅红雪',
+            project: '音乐',
+            score: 10
+        }, {
+            name: '李晓梅',
+            project: '科技',
+            score: 60
+        }, {
+            name: '付佳尔',
+            project: '武学',
+            score: 98
+        }, {
+            name: '撒贝宁',
+            project: '木匠',
+            score: 98
+        }];
+        var tBody = document.querySelector("tbody")
+        for (var i = 0; i < dates.length; i++) {
+            var tr = document.createElement("tr");
+            tBody.appendChild(tr);
+            for (var key in dates[i]) {
+                var td = document.createElement("td");
+                td.innerHTML = dates[i][key];
+                tr.appendChild(td);
+            }
+            var cz = document.createElement("td");
+            cz.innerHTML = "<button type='button' class='btn btn-danger'>删除</button>";
+            tr.appendChild(cz);
+        }
+        var bts = document.querySelectorAll(".btn");
+        for (var i = 0; i < bts.length; i++) {
+            bts[i].onclick = function() {
+                var ul = this.parentNode.parentNode;
+                tBody.removeChild(ul);
+            }
+        }
+    </script>
+</body>
+
+</html>

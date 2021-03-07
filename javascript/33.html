@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .nr {
+            position: relative;
+        }
+        
+        .tabadd {
+            position: absolute;
+            top: 3px;
+            right: 0;
+        }
+        
+        span {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="nr">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">测试1 
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">测试2
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                            </a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">测试3
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tabadd">
+                        <button type="button" class="btn  btn-primary" aria-label="Right Align">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">测试1</div>
+                        <div role="tabpanel" class="tab-pane" id="profile">测试2</div>
+                        <div role="tabpanel" class="tab-pane" id="messages">测试3</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    var that;
+    class Tab {
+        constructor(id) {
+            that = this;
+            this.id = id;
+            this.main = document.querySelector(id);
+            this.lis = this.main.querySelectorAll("li");
+            this.sections = this.main.querySelectorAll(".tab-content div");
+            this.add = this.main.querySelector(".btn");
+            this.ul = this.main.querySelector(".nav-tabs");
+            this.init();
+        }
+        init() {
+                this.updateEle();
+                this.add.onclick = this.addTab;
+                for (var i = 0; i < this.lis.length; i++) {
+                    this.lis[i].index = i;
+                    this.lis[i].querySelector(".glyphicon").onclick = this.delTab;
+                    this.lis[i].querySelector("a").ondblclick = this.editTab;
+                }
+            }
+            //更新元素
+        updateEle() {
+                this.lis = this.main.querySelectorAll("li");
+            }
+            //添加功能
+        addTab() {
+                var num = Math.floor(Math.random() * 100);
+                var li = ` <li role="presentation" class="active">
+                            <a href="#messages${num}" aria-controls="messages" role="tab" data-toggle="tab">
+                              测试${num}
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 
+                            </a>
+                        </li>`;
+                $('.nav-tabs').children().removeClass('active');
+                $('.nav-tabs').append(li);
+                var div = `<div role="tabpanel" class="tab-pane active" id="messages${num}">测试${num}</div>`;
+                $(".tab-content").children().removeClass('active');
+                $(".tab-content").append(div);
+                that.init();
+            }
+            //删除功能
+        delTab(e) {
+                var index = this.parentNode.parentNode.index;
+                $(".nav-tabs").children().eq(index).remove();
+                $(".tab-content").children().eq(index).remove();
+                that.init();
+                // that.lis[index] && that.lis[index].click();
+                index--;
+                // if (!$('li.active').length) {
+                //     $(".nav-tabs").children().eq(index--).addClass('active');
+                // }
+                //第一个为true才会执行第二个
+                !$('li.active').length && $(".nav-tabs").children().eq(index).addClass('active');
+            }
+            //编辑功能
+        editTab() {
+
+        }
+    }
+    var tab = new Tab('.nr');
+</script>
+
+</html>

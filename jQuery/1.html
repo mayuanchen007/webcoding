@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        .box>ul>li li {
+            width: 70px;
+            height: 40px;
+            background-color: cornsilk;
+            list-style: none;
+            border-top: 1px solid blueviolet;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .box>ul>li {
+            float: left;
+        }
+        
+        ul {
+            padding: 0;
+        }
+        
+        a {
+            display: block;
+            width: 70px;
+            height: 40px;
+            background-color: pink;
+            text-decoration: none;
+        }
+        
+        a,
+        li li {
+            text-align: center;
+            line-height: 40px;
+        }
+        
+        .box>ul>li>ul {
+            display: none;
+        }
+        
+        .box>ul>li>ul>li:hover {
+            background-color: coral;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <ul>
+            <li>
+                <a href=""> 模块1</a>
+                <ul>
+                    <li>@我</li>
+                    <li>私信</li>
+                    <li>留言</li>
+                </ul>
+            </li>
+            <li> <a href=""> 模块2</a>
+                <ul>
+                    <li>@我</li>
+                    <li>私信</li>
+                    <li>留言</li>
+                </ul>
+            </li>
+            <li> <a href=""> 模块3</a>
+                <ul>
+                    <li>@我</li>
+                    <li>私信</li>
+                    <li>留言</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function() {
+            // $(".box>ul>li").mouseover(function() {
+            //     // $(this).children("a").siblings("ul").css("display", "block");
+            //     $(this).children("a").siblings("ul").slideDown(1000);
+            // });
+            // $(".box>ul>li").mouseout(function() {
+            //     //$(this).children("a").siblings("ul").css("display", "none");
+            //     $(this).children("a").siblings().slideUp(1000);
+            // });
+            $(".box>ul>li").hover(
+                function() {
+                    $(this).children("a").siblings("ul").stop().slideDown(1000);
+                },
+                function() {
+                    $(this).children("a").siblings().stop().slideUp(1000);
+                });
+        });
+    </script>
+</body>
+
+</html>

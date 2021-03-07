@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            position: relative;
+            width: 100px;
+            height: 500px;
+            border: 3px solid wheat;
+            border-radius: 10px;
+        }
+        
+        img {
+            display: none;
+            width: 900px;
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 10px;
+        }
+        
+        .small {
+            display: block;
+            width: 100px;
+            height: 500px;
+            z-index: 1000;
+        }
+        
+        .current_big {
+            display: block;
+        }
+        
+        .current {
+            width: 900px;
+        }
+        
+        .current .small {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li class="current">
+                <a href="">
+                    <img class="small" src="img/12.png" alt="">
+                    <img class="current_big" src="img/12b.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img class="small" src="img/13.png" alt="">
+                    <img src="img/13b.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img class="small" src="img/14.png" alt="">
+                    <img src="img/14b.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img class="small" src="img/15.png" alt="">
+                    <img src="img/15b.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img class="small" src="img/16.png" alt="">
+                    <img src="img/16b.png" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        $(function() {
+            $("li").stop().mouseenter(function() {
+                $(this).stop().animate({
+                    width: 900
+                }, 500).find(".small").stop().fadeOut(500).siblings().stop().fadeIn(500);
+                $(this).siblings().stop().animate({
+                    width: 100
+                }, 500).find(".small").stop().fadeIn(500).siblings().stop().fadeOut(500);
+            });
+        });
+    </script>
+</body>
+
+</html>

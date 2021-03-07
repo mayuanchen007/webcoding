@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+        }
+        
+        img {
+            width: 250px;
+            height: 250px;
+        }
+        
+        ul li {
+            border: 5px solid black;
+            list-style: none;
+            float: left;
+        }
+        
+        .box {
+            width: 866px;
+            height: 560px;
+            border: 1px solid white;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li><img src="img/6.jpg" alt=""></li>
+            <li><img src="img/7.jpg" alt=""></li>
+            <li><img src="img/8.jpg" alt=""></li>
+            <li><img src="img/9.jpg" alt=""></li>
+            <li><img src="img/10.jpg" alt=""></li>
+            <li><img src="img/11.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        $(function() {
+            $("li").hover(function() {
+
+                $(this).siblings().stop().fadeTo(100, 0.4);
+            }, function() {
+                $(this).siblings().stop().fadeTo(100, 1);
+            });
+        });
+    </script>
+</body>
+
+</html>

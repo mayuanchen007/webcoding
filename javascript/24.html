@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .col-md-12 div {
+            /* width: 180px; */
+            height: 100px;
+            float: left;
+            background-color: black;
+            color: white;
+            /* margin-left: 1px; */
+            line-height: 100px;
+            font-size: 90px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d">00</div>
+                <div class="h">00</div>
+                <div class="m">00</div>
+                <div class="s">00</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var a = '2021-6-18';
+        time(a);
+        setInterval("time('" + a + "')", 1000);
+
+        function time(a) {
+            var currentDate = new Date();
+            var date = new Date(a);
+            console.log(currentDate);
+            console.log(date);
+            var xc = (date - currentDate) / 1000;
+            //计算秒
+            var d = parseInt(xc / 60 / 60 / 24);
+            var h = parseInt(xc / 60 / 60 % 24);
+            var m = parseInt(xc / 60 % 60);
+            var s = parseInt(xc % 60);
+            document.querySelector(".d").innerHTML = d > 10 ? d + "天" : "0" + d + "天";
+            document.querySelector(".h").innerHTML = h > 10 ? h + "时" : "0" + h + "时";
+            document.querySelector(".m").innerHTML = m > 10 ? m + "分" : "0" + m + "分";
+            document.querySelector(".s").innerHTML = s > 10 ? s + "秒" : "0" + s + "秒";
+        }
+    </script>
+
+</body>
+
+</html>

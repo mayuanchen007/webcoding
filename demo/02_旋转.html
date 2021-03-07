@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            /* 设置绝对定位 */
+            position: relative;
+            width: 150px;
+            height: 30px;
+            border: 1px solid;
+        }
+        
+        div::after {
+            content: "";
+            /* 设置相对定位 */
+            position: absolute;
+            top: 1px;
+            right: 7px;
+            width: 15px;
+            height: 15px;
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            transform: rotate(45deg);
+            /* 设置过渡 */
+            transition: all 1s;
+            /* 设置选择点 */
+            transform-origin: center center;
+        }
+        
+        div:hover::after {
+            transform: rotate(225deg);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

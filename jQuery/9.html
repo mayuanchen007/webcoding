@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        //写法一：
+        $("div").on({
+            click: function() {
+                console.log("执行click方法");
+            },
+            mouseenter: function() {
+                console.log("执行mouseenter方法");
+            }
+        });
+        //写法二：
+        $("div").on("click mouseenter", function() {
+            console.log('同时执行两个方法');
+        });
+    </script>
+</body>
+
+</html>

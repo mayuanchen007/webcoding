@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <!-- 导入js -->
+    <script src="lib/template-web.js"></script>
+    <!-- 3.定义模板 -->
+    <script type="text/html" id='tpl-user'>
+        <!-- 模板的html结构 {{name}} 指定填入的数据 -->
+        <h1>{{name}}</h1>
+        {{@ age}} {{if man}}
+        <h4>已婚</h4>
+        {{else}}
+        <h4>未婚</h4>
+        {{/if}} {{each hobby}} {{$index}} {{$value}} {{/each}}
+        <h5>{{date|formatDate}}</h5>
+    </script>
+    <script>
+        template.defaults.imports.formatDate = function(time) {
+                let y = time.getFullYear();
+                let m = time.getMonth() + 1;
+                let d = time.getDate();
+                return y + '年' + m + '月' + d + '日';
+            }
+            //2.定义数据
+        var data = {
+            name: '张三',
+            age: '<h2>30<h2>',
+            man: false,
+            hobby: ['吃饭', '睡觉', '玩游戏'],
+            date: new Date()
+        };
+        //4.调用模板 
+        var htmlStr = template('tpl-user', data)
+        console.log(htmlStr); //<h1>张三</h1>
+        //5.渲染页面
+        $('div').append(htmlStr);
+    </script>
+</body>
+
+</html>

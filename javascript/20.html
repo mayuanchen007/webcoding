@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <script>
+        var btn = document.querySelector("button");
+        btn.addEventListener("click", function() {
+            console.log("监听事件一");
+        });
+        btn.addEventListener("click", function() {
+            console.log("监听事件二");
+        })
+        btn.attachEvent
+            //都会打印出来
+            //解绑事件1
+        btn.onclick = function() {
+                alert(1);
+                btn.onclick = null;
+            }
+            //解绑事件2
+        function fn() {
+            alert(2);
+            btn.removeEventListener("click", fn);
+        }
+        btn.addEventListener("click", fn);
+    </script>
+</body>
+
+</html>

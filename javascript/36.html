@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4]
+        let [a, b, c, d, e] = arr;
+        console.log(a + " " + b + " " + c + " " + d + " " + e); //36.html:15 1 2 3 4 undefined
+        let person = {
+            name: 'myc',
+            age: '18',
+            sing: function() {
+                console.log('i can singing');
+            }
+        }
+        let {
+            name: myName,
+            age: myAge,
+            sing: mySong,
+            a: b
+        } = person;
+        console.log(name); //空
+        console.log(myName); // myc
+        mySong(); //36.html:20 i can singing
+        console.log(b); //Identifier 'b' has already been declare
+    </script>
+</body>
+
+</html>

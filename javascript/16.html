@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        ul {
+            padding: 0;
+        }
+        
+        .box li[class] {
+            float: left;
+        }
+        
+        ul li {
+            width: 150px;
+            height: 50px;
+            list-style: none;
+            line-height: 50px;
+            text-align: center;
+            background-color: cornsilk;
+            cursor: pointer;
+        }
+        
+        ul li[class]:hover {
+            background-color: darkgoldenrod;
+        }
+        
+        ul li:hover {
+            background-color: pink;
+        }
+        
+        .box li[class] ul {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="box">
+                    <li class="data-li"><a href="">热门</a>
+                        <ul>
+                            <li>@我</li>
+                            <li>评论</li>
+                            <li>私信</li>
+                        </ul>
+                    </li>
+                    <li class="data-li"> <a href="">头条</a>
+                        <ul>
+                            <li>@我</li>
+                            <li>评论</li>
+                            <li>私信</li>
+                        </ul>
+                    </li>
+                    <li class="data-li"> <a href="">视频</a>
+                        <ul>
+                            <li>@我</li>
+                            <li>评论</li>
+                            <li>私信</li>
+                        </ul>
+                    </li>
+                    <li class="data-li"> <a href="">榜单</a>
+                        <ul>
+                            <li>@我</li>
+                            <li>评论</li>
+                            <li>私信</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        var li = document.querySelector(".box");
+        var lis = li.children;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function() {
+                this.children[1].style.display = "block";
+            }
+            lis[i].onmouseout = function() {
+                this.children[1].style.display = "none"
+            }
+        }
+    </script>
+</body>
+
+</html>
