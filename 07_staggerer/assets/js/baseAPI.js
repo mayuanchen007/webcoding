@@ -10,8 +10,6 @@ $.ajaxPrefilter(function(options) {
         }
     }
     options.complete = function(res) {
-        console.log(res.responseJSON.status);
-        console.log(res.responseJSON.message === '身份认证失败！');
         if (res.responseJSON.status === 1 && res.responseJSON.message === '身份认证失败！') {
             localStorage.removeItem('token');
             window.location = '/07_staggerer/login.html';
