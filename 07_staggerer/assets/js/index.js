@@ -42,7 +42,7 @@ function renderAvatar(data) {
     $("#welcome").html('欢迎' + username);
     if (data.user_pic) {
         $('.layui-nav-img').attr("src", data.user_pic);
-        $('.text-avatar').hode();
+        $('.text-avatar').hide();
         $('.layui-nav-img').show();
     } else {
         var firstCode = username.substring(0, 1).toUpperCase();
