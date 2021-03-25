@@ -15,6 +15,6 @@ app.get('/', (req, resp) => {
     console.log(req.startTime);
     resp.send("这是一个路由");
 });
-app.listen(80, () => {
+app.listen(3007, () => {
     console.log("server  start......");
 });
