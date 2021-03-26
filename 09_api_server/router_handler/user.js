@@ -5,7 +5,7 @@ exports.reguser = (req, resp) => {
     let userinfo = req.body;
     console.log(userinfo);
     if (!userinfo.username || !userinfo.password) {
-        resp.cc("用户名或者密码不合法！");
+        return resp.cc("用户名或者密码不合法！");
     }
     //检查用户名是否被占用
     const querysql = "select 1 from ev_user where username=?";
