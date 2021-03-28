@@ -3,7 +3,7 @@
 //这个函数中我们可以拿到给ajax提供的配置对象
 $.ajaxPrefilter(function(options) {
     //在发起真正的ajax请求之前，统一拼接请求的根路径
-    options.url = 'http://ajax.frontend.itheima.net' + options.url;
+    options.url = 'http://127.0.0.1:3007' + options.url;
     if (options.url.indexOf('/my/') !== -1) {
         options.headers = {
             Authorization: localStorage.getItem('token') || ''
