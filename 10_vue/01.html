@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本使用</title>
+    <!-- 1.导入js文件 -->
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 2.创建dom元素 -->
+    <div id='app'>
+        <h1>{{msg}}</h1>
+        <div id='app1'>{{msg+'-----'+2}}</div>
+        <div>{{1+2}}</div>
+    </div>
+
+</body>
+<!-- 3.创建vue对象 -->
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello word'
+        }
+    });
+</script>
+
+</html>
