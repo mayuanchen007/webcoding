@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据操作指令</title>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>{{msg2}}</div>
+        <!-- vue -->
+        <div v-text='msg'>{{msg2}}</div>
+        <!-- hello -->
+        <div v-html='msg'>{{msg2}}</div>
+        <div v-pre>{{msg}}</div>
+    </div>
+</body>
+<script>
+    const v = new Vue({
+        el: '#app',
+        data: {
+            msg: "<h1>hello</h1>",
+            msg2: 'vue'
+        }
+    });
+</script>
+
+</html>
