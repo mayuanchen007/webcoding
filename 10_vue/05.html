@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第一种用法 -->
+        <button v-on:click='fn1'>按钮1</button>
+        <!-- 第二种用法 -->
+        <button @click='fn1'>{{msg}}</button>
+        <!-- 传递参数 -->
+        <button @click='fn2' v-text='msg'></button>
+        <!-- 传递参数 事件对象 -->
+        <button @click=fn3(1,2,$event) v-html='msg'></button>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello'
+            },
+            // vue中的方法
+            methods: {
+                fn1: function() {
+                    console.log(this.msg);
+                },
+                fn2: function(e) {
+                    //事件对象
+                    console.log(e);
+                },
+                fn3: function(a, b, e) {
+                    console.log(e);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
