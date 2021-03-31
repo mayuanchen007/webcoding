@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <style>
+        .active {
+            width: 500px;
+            height: 300px;
+            background-color: antiquewhite;
+        }
+        
+        .c {
+            border: 5px saddlebrown solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 对象形式 -->
+        <div v-bind:class="{active:isActive,c:isC}"></div>
+        <!-- 数组形式 -->
+        <div v-bind:class='[activeClass,cClass]'></div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isActive: true,
+            isC: true,
+            activeClass: 'active',
+            cClass: 'c'
+        }
+    });
+</script>
+
+</html>

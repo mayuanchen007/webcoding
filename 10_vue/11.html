@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if</title>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-model='scoure'>
+        <div v-if='scoure>90'>优秀</div>
+        <div v-else-if='scoure>80&&scoure<=90'>一般</div>
+        <div v-else='scoure<=80'>不太行</div>
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '.box',
+        data: {
+            scoure: 88
+        }
+    });
+</script>
+
+</html>

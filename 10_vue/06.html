@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第一种用法 -->
+        <a v-bind:href='url'>跳转</a>
+        <!-- 第二种用法 简写-->
+        <a :href="url">跳转</a>
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            url: 'www.baidu.com'
+        }
+    });
+</script>
+
+</html>

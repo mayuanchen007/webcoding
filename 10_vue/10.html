@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <div v-show='flag'>123</div>
+        <div v-show='flag1'>123</div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '.box',
+        data: {
+            flag: false,
+            flag1: true
+        }
+    });
+</script>
+
+</html>
