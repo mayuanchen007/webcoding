@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+</head>
+
+<body>
+    <ul class="box">
+        <!-- 循环数组 -->
+        <li v-for='item in name'>{{item}}</li>
+        <!-- 带下标循环 -->
+        <li v-for='(item,index) in name'>{{item+"--"+index}}</li>
+        <!-- 循环数组中对象 -->
+        <li v-for='(item,index) in aihao'>{{item.name}}{{item.age}}{{index}}</li>
+        <!-- 循环对象 -->
+        <li v-for='(value,key,index) in man'>{{value+'--'+key+"--"+index}}</li>
+    </ul>
+
+</body>
+<script>
+    var obj = {
+        name: '张学友',
+        zy: '歌手',
+        gj: "中国"
+    }
+    new Vue({
+        el: '.box',
+        data: {
+            name: ['丽丽', '小明', '小米'],
+            aihao: [{
+                name: '名人',
+                age: 18
+            }, {
+                name: '医生',
+                age: 28
+            }, {
+                name: '作家',
+                age: 38
+            }],
+            man: obj
+        }
+    });
+</script>
+
+</html>

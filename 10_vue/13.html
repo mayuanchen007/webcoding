@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例</title>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <style>
+        ul {
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+        
+        li {
+            float: left;
+            list-style: none;
+            width: 80px;
+            height: 35px;
+            background-color: whitesmoke;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .img {
+            width: 400px;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        img {
+            width: 400px;
+            height: 250px;
+            display: none;
+        }
+        
+        img.current {
+            display: block;
+        }
+        
+        .xz {
+            background-color: black;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="manu">
+            <ul>
+                <li v-on:click='change(index)' :class="cIndex===index?'xz' :''" v-for='(value,index) in arr'>{{value.name}}</li>
+            </ul>
+            <div class="img">
+                <div v-for='(item, index) in arr'>
+                    <img :class="cIndex===index?'current' :''" :src="item.path">
+                </div>
+            </div>
+        </div>
+        <div></div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            cIndex: 0,
+            arr: [{
+                id: 1,
+                name: "一代",
+                path: "./img/1.webp"
+            }, {
+                id: 2,
+                name: "二代",
+                path: "./img/3.webp"
+            }, {
+                id: 3,
+                name: "三代",
+                path: "./img/4.webp"
+            }]
+        },
+        methods: {
+            change: function(index) {
+                this.cIndex = index
+            }
+        }
+    });
+</script>
+
+</html>
