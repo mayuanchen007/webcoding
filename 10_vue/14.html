@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
-    <script src="../js/vue.js"></script>
-    <script src="../js/jquery-2.1.0.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
 </head>
 
 <body>
@@ -44,7 +44,7 @@
                 <label class="layui-form-label">复选框</label>
                 <div class="layui-input-block">
                     <input type="checkbox" name="like[write]" v-model='like' value="write" title="写作">
-                    <input type="checkbox" name="like[read]" v-model='like' value="read" title="阅读" checked>
+                    <input type="checkbox" name="like[read]" v-model='like' value="read" title="阅读">
                     <input type="checkbox" name="like[dai]" v-model='like' value="dai" title="发呆">
                 </div>
             </div>
@@ -57,8 +57,8 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">单选框</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="sex" v-model='sex' value="男" title="男">
-                    <input type="radio" name="sex" v-model='sex' value="女" title="女" checked>
+                    <input type="radio" name="sex" v-model='sex' value="1" title="男">
+                    <input type="radio" name="sex" v-model='sex' value="2" title="女">
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
@@ -69,14 +69,14 @@
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo" v-on:click="handle">立即提交</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" v-on:click.prevent="handle">立即提交</button>
                     <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
         </form>
     </div>
 </body>
-<script src="../layui/layui.js"></script>
+<script src="./layui/layui.js"></script>
 <script>
     //Demo
     layui.use('form', function() {
@@ -96,14 +96,15 @@
             title: "title",
             password: "password",
             city: 1,
-            like: ['write', 'dai'],
-            sex: "女",
+            like: ['write'],
+            sex: "1",
             value: "文本内容"
         },
         methods: {
             handle: function() {
                 console.log(this.title);
                 console.log(this.password);
+                console.log(this.sex);
                 console.log(this.city);
                 console.log(this.like);
             }

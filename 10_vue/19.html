@@ -5,24 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>v-model</title>
+    <title>Document</title>
     <script src="./js/vue.js"></script>
     <script src="./js/jquery-2.1.0.min.js"></script>
 </head>
 
 <body>
-    <div id="app">
-        <div>{{msg}}</div>
-        <input type="text" v-model='msg'>{{date}}
+    <div class="box">
+        <span>{{date | format}}</span>
     </div>
 </body>
 <script>
+    Vue.filter('format', function(value) {
+        console.log(value);
+        var year = value.getFullYear();
+        var mouth = value.getMonth();
+        var day = value.getDate();
+        return year + '年' + (mouth + 1) + '月' + day + '日';
+    });
     new Vue({
-        el: "#app",
+        el: ".box",
         data: {
-            msg: "hello",
             date: new Date()
         }
+
     });
 </script>
 

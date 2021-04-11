@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <script src="./js/jquery-2.1.0.min.js"></script>
+    <style>
+        .a {
+            background-color: blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" v-fouse name="" id="name">
+        <input type="text" v-color='color' name="" id="pass">
+    </div>
+</body>
+<script>
+    Vue.directive('fouse', {
+        inserted: function(el) {
+            el.focus();
+        }
+    });
+    Vue.directive('color', {
+        bind: function(el, bingding) {
+            console.log(bingding.value);
+            console.log(el);
+            el.style.backgroundColor = bingding.value
+        }
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            color: "blue"
+        }
+    });
+</script>
+
+</html>
