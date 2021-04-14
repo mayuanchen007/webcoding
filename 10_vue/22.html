@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局组件</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <hello-world></hello-world>
+        <hello-nick></hello-nick>
+    </div>
+
+</body>
+<script>
+    Vue.component('helloWorld', {
+        data: function() {
+            return {
+                msg: 'hello world'
+            }
+        },
+        template: `<h1>{{msg}}</h1>`
+    });
+    Vue.component('hello-nick', {
+        data: function() {
+            return {
+                total: 0
+            }
+        },
+        methods: {
+            handle: function() {
+                this.total++;
+            }
+        },
+        template: `<button v-on:click="handle">点击{{total}}次</button>`
+    });
+    new Vue({
+        el: '.box'
+    });
+</script>
+
+</html>
