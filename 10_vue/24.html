@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 静态赋值 -->
+        <menu-item f='我是父元素'></menu-item>
+        <!-- 动态赋值 -->
+        <menu-item :f='father'></menu-item>
+    </div>
+</body>
+<script>
+    Vue.component("menu-item", {
+        data: function() {
+            return {
+                sun: "我是子组件内容"
+            }
+        },
+        props: ['f'],
+        template: `<h1>{{sun+'---'+f}}</h1>`
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            father: "我是父组件内容"
+        }
+    });
+</script>
+
+</html>

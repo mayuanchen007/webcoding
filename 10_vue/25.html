@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <menu-h1 :father='father'></menu-h1>
+        <menu-h2 :father='father'></menu-h2>
+    </div>
+</body>
+<script>
+    Vue.component("menu-h1", {
+        data: function() {
+            return {
+                son: "子组件1"
+            }
+        },
+        props: ['father'],
+        template: `<h1>{{son}}{{father}}</h1>`
+
+    });
+    Vue.component('menu-h2', {
+        data: function() {
+            return {
+                son1: '子组件2'
+            }
+
+        },
+        props: ['father'],
+        template: `<div>{{son1}}--{{father}}<menu-h1 :father='father'></menu-h1></div>`
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            father: "父组件"
+        }
+    });
+</script>
+
+</html>
