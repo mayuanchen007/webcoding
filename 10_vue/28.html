@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <tom-item></tom-item>
+        <jay-item></jay-item>
+    </div>
+</body>
+<script>
+    var hub = new Vue();
+    Vue.component('tom-item', {
+        data: function() {
+            return {
+                num: 0
+            }
+        },
+        template: `<div><span>tom:{{num}}</span>
+            <button @click='handle'>按钮</button></div>
+        `,
+        methods: {
+            handle: function() {
+                hub.$emit('jay-event', 2);
+            }
+        },
+        mounted: function() {
+            hub.$on('tom-event', (val) => {
+                this.num += val;
+            });
+        }
+    });
+    Vue.component("jay-item", {
+        data: function() {
+            return {
+                num: 0
+            }
+        },
+        template: `<div><span>jay:{{num}}</span><button @click='handle'>按钮</button></div>
+        `,
+        methods: {
+            handle: function() {
+                hub.$emit('tom-event', 1)
+            }
+        },
+        mounted: function() {
+            hub.$on('jay-event', (val) => {
+                this.num += val;
+            })
+        }
+    });
+    new Vue({
+        el: ".box"
+    });
+</script>
+
+</html>

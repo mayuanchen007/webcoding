@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <item-name :arr='arr'></item-name>
+
+    </div>
+</body>
+<script>
+    Vue.component('item-name', {
+        data: function() {
+            return {
+                msg: ''
+            }
+        },
+        props: ['arr'],
+        template: `<div><ul>
+                <li v-for='(item,index) in arr'>{{item}}</li>
+            </ul>
+            <button @click='arr.push("刘德华")'>添加人员</button></div>
+            `
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            arr: ['黎明', '张学友', '郭富城']
+        }
+    });
+</script>
+
+
+</html>
