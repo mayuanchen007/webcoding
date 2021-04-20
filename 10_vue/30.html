@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+
+        <item :msg='msg' @han='handle($event)'></item>
+    </div>
+</body>
+<script>
+    Vue.component('item', {
+        data: function() {
+            return {
+                age: 22
+            }
+        },
+        props: ['msg'],
+        template: `<div><h1>{{msg}}</h1>
+                 <button @click='$emit("han",age)'>按钮</button></div>`
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            msg: "父组件"
+        },
+        methods: {
+            handle: function(val) {
+                console.log(val);
+            }
+        }
+    });
+</script>
+
+</html>

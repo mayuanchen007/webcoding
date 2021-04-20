@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+    <style>
+        .current {
+            color: rgb(99, 99, 35);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <item :arr='arr'>
+            <template slot-scope='slotProps'>
+                <strong v-if='slotProps.item.id==3' class="current">{{slotProps.item.name}}</strong>
+                <span v-else>{{slotProps.item.name}}</span>
+            </template>
+        </item>
+    </div>
+</body>
+<script>
+    Vue.component('item', {
+        props: ['arr'],
+        template: `<div>
+                    <li :key='item.id' v-for='(item,index) in arr'>
+                        <slot :item='item'>{{item.name}}</slot>
+                        </li>
+                    </div>`
+
+    });
+    new Vue({
+        el: ".box",
+        data: {
+            arr: [{
+                id: 1,
+                name: '苹果'
+            }, {
+                id: 2,
+                name: '柠檬'
+            }, {
+                id: 3,
+                name: '香蕉'
+            }]
+        }
+    });
+</script>
+
+</html>

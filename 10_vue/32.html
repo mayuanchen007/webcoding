@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div class="box">
+        <item>
+            <p slot='header'>header</p>
+            <h1 slot="main1">main1</h1>
+            <h2 slot='main2'>main2</h2>
+            <h3 slot='footer'>footer</h3>
+        </item>
+        <item>
+            <template slot='main2'>header</template>
+        </item>
+    </div>
+</body>
+<script>
+    Vue.component('item', {
+        template: `
+        <div>
+            <header> <slot name='header'></slot></header>
+            <main><slot name='main1'></slot>
+                <slot name='main2'></slot></main>
+                <footer>
+                    <slot name='footer'></slot></footer>
+            </div>
+        `
+    });
+    new Vue({
+        el: ".box"
+    });
+</script>
+
+</html>
