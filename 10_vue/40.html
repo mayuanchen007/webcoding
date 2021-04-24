@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios post</title>
+</head>
+
+<body>
+
+</body>
+<script src="./js/axios.min.js"></script>
+<script>
+    axios.defaults.baseURL = "http://localhost:3007";
+    // 第一种
+    axios.post("/people", {
+        name: 'mmmyc',
+        age: 15
+    }).then(function(ret) {
+        console.log(ret.data);
+    });
+    // 第二种
+    var params = new URLSearchParams();
+    params.append("name", "mmmmmyc");
+    params.append("age", 14);
+    axios.post("/people", params).then(ret => {
+        console.log(ret);
+    });
+</script>
+
+</html>

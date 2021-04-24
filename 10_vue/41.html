@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./js/axios.min.js"></script>
+<script>
+    //一次请求
+    async function query() {
+        var ret = await new Promise(function(resolve, reject) {
+            window.setTimeout(function() {
+                resolve('hello')
+            }, 1000);
+        });
+        return ret;
+    }
+    query().then(function(data) {
+        console.log(data);
+    });
+    //多次请求
+    async function query1() {
+        axios.defaults.baseURL = "http://localhost:3007";
+
+        var ret = await axios.get("/book/123");
+        console.log(ret.data.id);
+        var ret1 = await axios.get("/book?info=" + ret.data.id);
+        return ret1.data;
+    }
+    query1().then(function(ret) {
+        console.log(ret);
+    });
+</script>
+
+</html>
