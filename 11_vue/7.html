@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <!-- 布尔类型 -->
+        <router-link to='/user1/1' "">user1</router-link>
+        <!-- 对象类型 -->
+        <router-link to='/user2/2'>user2</router-link>
+        <!-- 函数类型 -->
+        <router-link to='/user3/3'>user3</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    const user1 = {
+        props: ['id'],
+        template: `<h1>{{id}}</h1>`
+    }
+    const user2 = {
+        props: ['name', 'age'],
+        template: `<h1>{{name}}---{{age}}</h1>`
+    }
+    const user3 = {
+        props: ['name', 'age', 'id'],
+        template: `<h1>{{name}}---{{age}}---{{id}}</h1>`
+    }
+    const myRouter = new VueRouter({
+        routes: [{
+            path: '/user1/:id',
+            component: user1,
+            props: true
+        }, {
+            path: '/user2/:id',
+            component: user2,
+            props: {
+                name: '支行还没',
+                age: 66
+            }
+        }, {
+            path: '/user3/:id',
+            component: user3,
+            props: route => ({
+                name: 'user3',
+                age: 1,
+                id: route.params.id
+            })
+        }]
+    });
+    new Vue({
+        el: '.app',
+        router: myRouter
+    });
+</script>
+
+</html>

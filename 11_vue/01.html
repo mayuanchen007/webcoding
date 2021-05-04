@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <a href="#/zhuye">主页</a>
+        <a href="#/keji">科技</a>
+        <a href="#/caijing">财经</a>
+        <a href="#/yule">娱乐</a>
+        <component :is="com"></component>
+    </div>
+
+</body>
+<script>
+    const zhuye = {
+        template: `<h1>主页</h1>`
+    }
+    const keji = {
+        template: `<h1>科技</h1>`
+    }
+    const caijing = {
+        template: `<h1>财经</h1>`
+    }
+    const yule = {
+        template: `<h1>娱乐</h1>`
+    }
+    const vm = new Vue({
+        el: '.app',
+        data: {
+            com: 'caijing'
+        },
+        components: {
+            zhuye,
+            keji,
+            caijing,
+            yule
+        }
+    });
+
+    window.onhashchange = function() {
+        console.log(location.hash);
+        switch (location.hash.slice(1)) {
+            case '/zhuye':
+                vm.com = 'zhuye'
+                break
+            case '/keji':
+                vm.com = 'keji'
+                break
+            case '/caijing':
+                console.log(2);
+                vm.com = 'caijing'
+                break
+            case '/yule':
+                vm.com = 'yule'
+                break
+        }
+
+    };
+</script>
+
+</html>

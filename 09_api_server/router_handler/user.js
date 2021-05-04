@@ -32,7 +32,6 @@ exports.reguser = (req, resp) => {
         if (err) {
             return resp.cc("注册用户失败");
         }
-
         return resp.cc("注册用户成功", 0)
 
     });

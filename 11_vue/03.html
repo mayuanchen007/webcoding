@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- A.导入js文件 -->
+    <script src="./lib/vue.js"></script>
+    <script src="./lib/vue-router.js"></script>
+</head>
+
+<body>
+    <div class="app">
+        <!-- B.添加路由链接:<router-link>是路由中提供的标签，
+               默认会被渲染为a标签，to属性默认被渲染为href属性，
+               to属性的值会被渲染为#开头的hash地址 
+        -->
+        <router-link to="/user">user</router-link>
+        <router-link to="/login">login</router-link>
+        <!-- C.添加路由填充位（路由占位符）-->
+        <router-view></router-view>
+    </div>
+</body>
+<script>
+    // D.定义路由组件
+    const user = {
+        template: `<h1>user</h1>`
+    }
+    const login = {
+            template: `<h1>login</h1>`
+        }
+        // E.配置路由规则并创建路由实例
+    const router = new VueRouter({
+        //routes是路由规则数组 注意：是routes
+        routes: [
+            //每一个路由规则都是一个对象，对象中至少包含path和component两个属性
+            //path表示  路由匹配的hash地址，component表示路由规则对应要展示的组件对象
+            {
+                path: '/user',
+                component: user
+            }, {
+                path: '/login',
+                component: login
+            }
+        ]
+    });
+    new Vue({
+        el: '.app',
+        // F.将路由挂载到Vue实例中  //通过router属性挂载路由对象
+        // router: router
+        router
+    });
+</script>
+
+</html>
