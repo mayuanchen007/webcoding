@@ -7,15 +7,15 @@
         </el-header>
         <el-container>
             <!-- 侧边栏 -->
-            <el-aside width="200px">
-                <div class="toggle-button">|||</div>
-                <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" unique-opened >
-                    <el-submenu :index="item.id+''" v-for="(item) in menus" :key='item.id'>
+            <el-aside :width="!iscollapse?'200px':'64px'">
+                <div class="toggle-button" @click='tochange'>|||</div>
+                <el-menu background-color="#333744" text-color="#fff" active-text-color="#409eff" unique-opened :collapse='iscollapse' :collapse-transition='false' router :default-active='activeIndex'>
+                    <el-submenu :index="'/'+item.path" v-for="(item) in menus" :key='item.id'>
                         <template slot="title">
                             <i :class="icons[item.id]"></i>
                             <span>{{item.authName}}</span>
                         </template>  
-                        <el-menu-item :index="child.id+''" v-for="(child) in item.children" :key='child.id'>
+                        <el-menu-item :index="'/'+child.path+''" v-for="(child) in item.children" :key='child.id' @click='setActive(child.path)'>
                             <template >
                                     <i class="el-icon-menu"></i>
                                     <span>{{child.authName}}</span>
@@ -25,7 +25,7 @@
                 </el-menu>
         </el-aside>
             <!-- 主页 -->
-            <el-main>Main</el-main>
+            <el-main><router-view></router-view></el-main>
         </el-container>
     </el-container>
 </template>
@@ -40,11 +40,14 @@ export default {
               '101':'iconfont icon-shangpin',
               '102':'iconfont icon-danju',
               '145':'iconfont icon-baobiao'
-          }
+          },
+          iscollapse:false,
+          activeIndex:''
       }
   },
   created(){
       this.getMenuList();
+      this.activeIndex=sessionStorage.getItem('activeIndex');
   },
   methods:{
       layout(){
@@ -56,6 +59,14 @@ export default {
         if(res.meta.status!==200) return this.$message.error("获取左侧菜单失败");
         this.menus=res.data;
         console.log(res.data);
+      },
+      tochange(){
+          this.iscollapse=! this.iscollapse;
+      },
+      setActive(value){
+          console.log(value);
+          sessionStorage.setItem('activeIndex',"/"+value);
+          this.activeIndex=sessionStorage.getItem('activeIndex');
       }
   }
 }
