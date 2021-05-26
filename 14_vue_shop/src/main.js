@@ -18,6 +18,8 @@ Vue.prototype.$http = axios;
 import { Message } from 'element-ui';
 Vue.use(ElementUI);
 Vue.prototype.$message = Message;
+import { MessageBox } from 'element-ui'
+Vue.prototype.$confirm = MessageBox.confirm;
 new Vue({
     router,
     render: h => h(App)
