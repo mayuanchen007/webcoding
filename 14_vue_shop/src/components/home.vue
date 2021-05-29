@@ -58,13 +58,11 @@ export default {
         const {data :res}= await this.$http.get('menus');
         if(res.meta.status!==200) return this.$message.error("获取左侧菜单失败");
         this.menus=res.data;
-        console.log(res.data);
       },
       tochange(){
           this.iscollapse=! this.iscollapse;
       },
       setActive(value){
-          console.log(value);
           sessionStorage.setItem('activeIndex',"/"+value);
           this.activeIndex=sessionStorage.getItem('activeIndex');
       }

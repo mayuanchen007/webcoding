@@ -18,18 +18,18 @@
                 </el-col>               
             </el-row>
              <el-table  :data="userList" border style="width: 100%">
-                    <el-table-column type="index" label="序号" width="120"> </el-table-column>
-                    <el-table-column  prop="username" label="姓名" width="120"> </el-table-column>
-                    <el-table-column  prop="email" label="邮箱" width="180"> </el-table-column>
-                    <el-table-column  prop="mobile" label="电话" width="180"> </el-table-column>
-                    <el-table-column  prop="role_name" label="角色" width="180"> </el-table-column>
-                    <el-table-column  prop="mg_state" label="状态" width="180"> 
+                    <el-table-column type="index" label="#"> </el-table-column>
+                    <el-table-column  prop="username" label="姓名"> </el-table-column>
+                    <el-table-column  prop="email" label="邮箱" > </el-table-column>
+                    <el-table-column  prop="mobile" label="电话" > </el-table-column>
+                    <el-table-column  prop="role_name" label="角色" > </el-table-column>
+                    <el-table-column  prop="mg_state" label="状态"> 
                         <template slot-scope="scope">
                             <el-switch v-model="scope.row.mg_state" @change="changeState(scope.row)"></el-switch>
                         </template>
                         
                     </el-table-column>
-                    <el-table-column   label="操作" width="180">
+                    <el-table-column   label="操作" >
                         <template slot-scope="scope">
                         <el-tooltip class="item" effect="dark" content="用户编辑"  placement="top" :enterable=false>
                             
@@ -39,10 +39,9 @@
                             <el-button type="primary" icon="el-icon-delete" circle size="mini" @click="removeUserById(scope.row.id)"></el-button>
                         </el-tooltip>
                         <el-tooltip class="item" effect="dark" content="角色分配" placement="top" :enterable=false>
-                            <el-button type="primary" icon="el-icon-setting" circle size="mini"></el-button>
+                            <el-button type="primary" icon="el-icon-setting" circle size="mini" @click="fenpeiRole(scope.row)"></el-button>
                         </el-tooltip>
                         </template>
-
                     </el-table-column>
              </el-table>
              <!-- 分页区域 -->
@@ -70,7 +69,7 @@
                     </span>
             </el-dialog>
             <!-- 点击编辑弹出页面 -->
-            <el-dialog title="提示" :visible.sync="editDialogVisible" width="30%" @close='resetFiled'>
+            <el-dialog title="编辑用户" :visible.sync="editDialogVisible" width="30%" @close='resetFiled'>
                      <el-form :model="editForm" :rules="editFormRules" ref="editFormRef"  label-width="80px">
                         <el-form-item label="用户名" prop='username'>
                             <el-input v-model="editForm.username" disabled></el-input>
@@ -87,6 +86,18 @@
                         <el-button type="primary" @click="submitEdit">确 定</el-button>
                     </span>
             </el-dialog>
+            <!-- 点击分配角色弹出页面 -->
+            <el-dialog title="角色分配" :visible.sync="roleDialogVisible" width="30%" @close='clearRole'>
+                <span><p>当前的用户:{{userinfo.username}}</p></span>
+                <span><p>当前的角色:{{userinfo.role_name}}</p></span>
+                 <el-select v-model="role" placeholder="请选择">
+                    <el-option  v-for="item in roleList"  :key="item.id"  :label="item.roleName" :value="item.id"> </el-option>
+                </el-select>
+                <span slot="footer" class="dialog-footer">
+                    <el-button @click="roleDialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="saveRoleById(userinfo.id)">确 定</el-button>
+                </span>
+                </el-dialog>
         </el-card>
     </div>
 </template>
@@ -148,7 +159,11 @@ export default {
                 email:[{required: true, message: '请输入邮箱', trigger: 'blur' },{validator:checkEamil,trigger: 'blur'}],
                 mobile:[ { required: true, message: '请输入密码手机', trigger: 'blur' },
                      {validator:checkMobile,trigger: 'blur'}]
-            }
+            },
+            roleDialogVisible:false,
+            userinfo:{},
+            roleList:[],
+            role:''
         }
     },
     created(){
@@ -157,7 +172,6 @@ export default {
     methods:{
         initUsers:async function(){
             const {data:res}=await this.$http.get('/users',{params:this.params});
-            console.log(res);
             this.userList=res.data.users;
             this.total=res.data.total;
         },
@@ -191,7 +205,6 @@ export default {
                     return;
                 }
                 const {data:res}=await this.$http.post('users',this.userForm);
-                console.log(res);
                 if(res.meta.status!==201) return this.$message.error('添加用户失败');
                 this.$message.success('添加用户成功');
                 this.dialogVisible=false;
@@ -231,6 +244,32 @@ export default {
             if(res.meta.status!==200) return this.$message.error('删除失败');
             this.$message.success('删除成功');
             this.initUsers();
+        },
+        //分配角色
+        async  fenpeiRole(user)
+        {
+            this.userinfo=user;
+            //获取所有角色填充下拉框
+            const {data:res}=await this.$http.get('/roles');
+            if(res.meta.status!==200) return this.$message.error('获取角色失败');
+            this.roleList=res.data;
+            this.roleDialogVisible=true;
+        },
+        clearRole(){
+            this.roleList=[];
+            this.userinfo={};
+            this.role='';
+        },
+        async saveRoleById(id){
+            if(!this.role)
+            {
+                return this.$message.error('请选择角色');
+            }
+            const {data:res}= await this.$http.put(`users/${id}:id/role`,{rid:this.role});
+            if(res.meta.status!==200) return this.$message.error('分配角色失败');
+            this.roleDialogVisible=false;
+            this.$message.success('分配角色成功');    
+            this.initUsers();
         }
     }
    
@@ -238,4 +277,4 @@ export default {
 </script>
 <style lang="less" scoped>
 
-</style>
+</style> 
