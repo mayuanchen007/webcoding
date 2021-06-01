@@ -20,6 +20,9 @@ Vue.use(ElementUI);
 Vue.prototype.$message = Message;
 import { MessageBox } from 'element-ui'
 Vue.prototype.$confirm = MessageBox.confirm;
+
+import TreeTable from 'vue-table-with-tree-grid'
+Vue.component('tree-table', TreeTable);
 new Vue({
     router,
     render: h => h(App)
