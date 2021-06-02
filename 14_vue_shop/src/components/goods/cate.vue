@@ -35,19 +35,20 @@
                     :total="total">
         </el-pagination>
         <!-- 添加分类 -->
-            <el-dialog title="添加分类"  :visible.sync="addCateDialogVisible"  width="30%">
+        <el-dialog title="添加分类"  :visible.sync="addCateDialogVisible"  width="30%" @close='closeCate'>
                 <el-form :model="cateForm" :rules="cateFormRules" ref="cateFormRef" label-width="100px" class="demo-ruleForm">
                     <el-form-item label="分类名称" prop="cat_name">
                         <el-input v-model="cateForm.cat_name"></el-input>
                     </el-form-item>
                     <el-form-item label="父级名称" >
+                        <el-cascader :key='isResouceShow' v-model="selectKeys" :options="parentCateList" :props="cascaderProps"  @change="handleChange" clearable ></el-cascader>
                     </el-form-item>
                 </el-form>
                 <span slot="footer" class="dialog-footer">
                 <el-button @click="addCateDialogVisible = false">取 消</el-button>
-                <el-button type="primary" @click="addCateDialogVisible = false">确 定</el-button>
+                <el-button type="primary" @click="saveCate">确 定</el-button>
                 </span>
-            </el-dialog>
+        </el-dialog>
     </el-card>
 </div>
 
@@ -94,7 +95,17 @@ export default {
                 cateFormRules:{
                     cat_name:[{ required: true, message: '请输入活动名称分类名称', trigger: 'blur' }]
                 },
-                parentCateList:[]
+                parentCateList:[],
+                selectKeys:[],
+                cascaderProps:{
+                      value: 'cat_id',
+                      label: 'cat_name',
+                      children:'children',
+                      checkStrictly: true,
+                      expandTrigger:'hover' 
+                },
+                isResouceShow: 0
+
         }
     },
     created(){
@@ -104,7 +115,6 @@ export default {
         async initCate(){
             const {data:res}=await this.$http.get('/categories',{params:this.query});
             if(res.meta.status!=200) return this.$message.error('查询商品列表失败');
-            console.log(res);
             this.cateList=res.data.result;
             this.total=res.data.total;
         },
@@ -118,15 +128,45 @@ export default {
         },
         addCate(){
             this.addCateDialogVisible=true;
+            this.getparentCateList();
         },
          //获取父级列表
         async getparentCateList(){
-            const {data:res}=await this.$http.get('/categories',{type:2});
+            const {data:res}=await this.$http.get('/categories',{params:{type:2}});
             if(res.meta.status!=200) return this.$message.error('获取父级列表失败');
             this.parentCateList=res.data;
+            console.log(res.data);
+        },
+        handleChange(){
+
+            console.log(this.selectKeys);
+            if(this.selectKeys.length>0){
+                this.cateForm.cat_pid=this.selectKeys[this.selectKeys.length-1];
+                this.cateForm.cat_level=this.selectKeys.length;
+            }else{
+                 this.cateForm.cat_pid=0;
+                 this.cateForm.cat_level=0;
+            }
+        },
+        saveCate(){
+            this.$refs.cateFormRef.validateField(async validate=>{
+                if(!validate) return;
+                const {data:res}=await this.$http.post('/categories',this.cateForm);
+                if(res.meta.status!=200) return this.$message.error("添加分类失败");
+                this.addCateDialogVisible=false;
+                this.$message.success("添加分类成功");
+            });
+
+        },
+        closeCate(){
+            this.$refs.cateFormRef.resetFields();
+            this.cateForm.cat_pid=0;
+                 this.cateForm.cat_level=0;
+                 this.selectKeys=[];
         }
     }
 }
+
 </script>
 
 <style lang="less" scoped>
