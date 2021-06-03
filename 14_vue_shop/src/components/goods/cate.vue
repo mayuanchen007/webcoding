@@ -40,7 +40,7 @@
                     <el-form-item label="分类名称" prop="cat_name">
                         <el-input v-model="cateForm.cat_name"></el-input>
                     </el-form-item>
-                    <el-form-item label="父级名称" >
+                    <el-form-item label="父级名称" prop='parent'>
                         <el-cascader :key='isResouceShow' v-model="selectKeys" :options="parentCateList" :props="cascaderProps"  @change="handleChange" clearable ></el-cascader>
                     </el-form-item>
                 </el-form>
@@ -93,7 +93,8 @@ export default {
                     cat_level:0
                 },
                 cateFormRules:{
-                    cat_name:[{ required: true, message: '请输入活动名称分类名称', trigger: 'blur' }]
+                    cat_name:[{ required: true, message: '请输入活动名称分类名称', trigger: 'blur' }],
+                    parent:[]
                 },
                 parentCateList:[],
                 selectKeys:[],
@@ -148,14 +149,16 @@ export default {
                  this.cateForm.cat_level=0;
             }
         },
-        saveCate(){
-            this.$refs.cateFormRef.validateField(async validate=>{
-                if(!validate) return;
-                const {data:res}=await this.$http.post('/categories',this.cateForm);
-                if(res.meta.status!=200) return this.$message.error("添加分类失败");
+        async saveCate(){
+            // this.$refs.cateFormRef.validateField( validate=>{
+            //     if(!validate) return;
+                
+            // });
+            const {data:res}=await this.$http.post('/categories',this.cateForm);
+                console.log(res);
+                if(res.meta.status!=201) return this.$message.error("添加分类失败");
                 this.addCateDialogVisible=false;
                 this.$message.success("添加分类成功");
-            });
 
         },
         closeCate(){
