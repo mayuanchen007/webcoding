@@ -23,6 +23,18 @@ Vue.prototype.$confirm = MessageBox.confirm;
 
 import TreeTable from 'vue-table-with-tree-grid'
 Vue.component('tree-table', TreeTable);
+
+//时间过滤器
+Vue.filter("dataFormat", function(date) {
+    const dt = new Date(date);
+    const year = dt.getFullYear();
+    const mouth = (dt.getMonth() + 1 + "").padStart(2, '0');
+    const day = (dt.getDate() + "").padStart(2, '0');
+    const h = (dt.getHours() + "").padStart(2, '0');
+    const f = (dt.getMinutes() + "").padStart(2, '0');
+    const s = (dt.getSeconds() + "").padStart(2, '0');
+    return year + "-" + mouth + "-" + day + " " + h + ":" + f + ":" + s;
+})
 new Vue({
     router,
     render: h => h(App)
