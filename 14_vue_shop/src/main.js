@@ -31,9 +31,9 @@ import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 
 Vue.use(VueQuillEditor, /* { default global options } */ )
-
-
-//时间过滤器
+    // import echarts from 'echarts'
+    // Vue.use(echarts)
+    //时间过滤器
 Vue.filter("dataFormat", function(date) {
     const dt = new Date(date);
     const year = dt.getFullYear();
