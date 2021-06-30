@@ -9,8 +9,16 @@ import './assets/fonts/iconfont.css'
 Vue.config.productionTip = false
 import axios from 'axios'
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/';
+
+import nProgress from 'nprogress'
+
 axios.interceptors.request.use(config => {
     config.headers.Authorization = window.sessionStorage.getItem('token');
+    nProgress.start();
+    return config;
+})
+
+axios.interceptors.response.use(config => {
     return config;
 })
 
