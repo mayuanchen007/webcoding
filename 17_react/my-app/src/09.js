@@ -67,26 +67,26 @@ class App extends React.Component {
     }
 
     render() {
-    return (
-        <div className="app">
-            <div>
-            <input className="user" type="text" placeholder="请输入评论人" name='userName' value={this.state.userName} onChange={this.handleFrom} />
-            <br />
-            <textarea
-                className="content"
-                cols="30"
-                rows="10"
-                placeholder="请输入评论内容"
-                name='userContent'
-                value={this.state.userContent}
-                onChange={this.handleFrom}
-            />
-            <br />
-            <button onClick={this.submit}>发表评论</button>
+        return (
+            <div className="app">
+                <div>
+                <input className="user" type="text" placeholder="请输入评论人" name='userName' value={this.state.userName} onChange={this.handleFrom} />
+                <br />
+                <textarea
+                    className="content"
+                    cols="30"
+                    rows="10"
+                    placeholder="请输入评论内容"
+                    name='userContent'
+                    value={this.state.userContent}
+                    onChange={this.handleFrom}
+                />
+                <br />
+                <button onClick={this.submit}>发表评论</button>
+                </div>
+                {this. renderList()}
             </div>
-            {this. renderList()}
-        </div>
-    )
+        )
   }
 }
 
