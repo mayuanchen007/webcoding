@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 // import Item from './01'
 // import Btn from './02'
 // import Btn2 from './03'
-import App from './16'
+import App from './19'
 //3.挂载对象
 ReactDOM.render(<App/> , root)
