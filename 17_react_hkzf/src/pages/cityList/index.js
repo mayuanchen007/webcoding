@@ -69,7 +69,7 @@ export default class CityList extends React.Component{
         cityIndex1.unshift('hot');
         //当前城市
         const curr= await getCurrentCity();
-        cityList1['#']=[curr];
+        cityList1['#']=[curr[0]];
         cityIndex1.unshift('#')
         this.setState({
             cityList:cityList1,
@@ -86,7 +86,8 @@ export default class CityList extends React.Component{
     changeCity(item){
         if(this.state.list.indexOf(item.label)>-1)
         {
-            window.localStorage.setItem("cur-city",JSON.stringify(item.label));
+            const arr=[item.label,item.value]    
+            window.localStorage.setItem("cur-city",JSON.stringify(arr));
             this.props.history.go(-1);
         }
         else{

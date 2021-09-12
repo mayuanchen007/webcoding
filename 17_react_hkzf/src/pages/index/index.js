@@ -72,8 +72,9 @@ export default class Index extends React.Component{
       //  });
       //使用utils中的公共方法获取当前城市
       getCurrentCity().then(res=>{
+       // console.log()
         this.setState({
-          currentCity:res
+          currentCity:res[0]
         })
       });
       

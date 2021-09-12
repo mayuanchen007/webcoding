@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import {TabBar} from 'antd-mobile'
 import '../../utils/fonts/iconfont.css'

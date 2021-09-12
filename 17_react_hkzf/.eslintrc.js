@@ -55,9 +55,8 @@ module.exports = {
         "react/display-name": 0, //防止在React组件定义中丢失displayName
         "react/forbid-prop-types": [0, { "forbid": ["any"] }], //禁止某些propTypes
         "react/jsx-boolean-value": 0, //在JSX中强制布尔属性符号
-        "react/jsx-closing-bracket-location": 1, //在JSX中验证右括号位置
+        "react/jsx-closing-bracket-location": 0, //在JSX中验证右括号位置
         "react/jsx-curly-spacing": [0, { "when": "never", "children": true }], //在JSX属性和表达式中加强或禁止大括号内的空格。
-        "react/jsx-indent-props": [0, 4], //验证JSX中的props缩进
         "react/jsx-key": 0, //在数组或迭代器中验证JSX具有key属性
         "react/jsx-max-props-per-line": [1, { "maximum": 1 }], // 限制JSX中单行上的props的最大数量
         "react/jsx-no-bind": 0, //JSX中不允许使用箭头函数和bind
@@ -66,7 +65,7 @@ module.exports = {
         "react/jsx-no-undef": 0, //在JSX中禁止未声明的变量
         "react/jsx-pascal-case": 0, //为用户定义的JSX组件强制使用PascalCase
         "react/jsx-sort-props": 0, //强化props按字母排序
-        "react/jsx-uses-react": 1, //防止反应被错误地标记为未使用
+        "react/jsx-uses-react": 0, //防止反应被错误地标记为未使用
         "react/jsx-uses-vars": 0, //防止在JSX中使用的变量被错误地标记为未使用
         "react/no-danger": 0, //防止使用危险的JSX属性
         "react/no-did-mount-set-state": 0, //防止在componentDidMount中使用setState
@@ -89,7 +88,10 @@ module.exports = {
         "no-mixed-spaces-and-tabs": 0, //禁止混用tab和空格
         "prefer-arrow-callback": 0, //比较喜欢箭头回调
         "arrow-parens": 0, //箭头函数用小括号括起来
-        "arrow-spacing": 0 //=>的前/后括号
+        "arrow-spacing": 0, //=>的前/后括号
+        "eslint-disable-next-line": 0,
+        "react/jsx-one-expression-per-line": "off"
+
     },
     "settings": {
         "import/ignore": [
