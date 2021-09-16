@@ -4,7 +4,7 @@ import './index.css';
 import 'antd-mobile/dist/antd-mobile.css';
 import 'react-virtualized/styles.css';
 import App from './App';
-
-ReactDOM.render( <App /> ,
+import './utils/urlUtil'
+ReactDOM.render( < App / > ,
     document.getElementById('root')
 );

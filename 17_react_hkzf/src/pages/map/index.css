@@ -16,3 +16,158 @@
     width: 100%;
     height: 100%;
 }
+
+.map .city {
+    background-color: grey;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.city .city-name {
+    display: block;
+    width: 50px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    padding-top: 5px;
+}
+
+.city .city-count {
+    display: block;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    line-height: 25px;
+    margin-top: -5px;
+}
+
+.map .house {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 330px;
+    transition: all 1s;
+    transform: translate3d(0, 330px, 0);
+    background: #fff;
+}
+
+.map .house-show {
+    transform: translate3d(0, 0, 0);
+}
+
+.map .houseItems {
+    padding: 0 10px;
+    overflow-y: auto;
+    height: 100%;
+    padding-bottom: 45px;
+}
+
+.map .home {
+    height: 120px;
+    position: relative;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding-top: 18px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.map .imgWrap {
+    float: left;
+    width: 106px;
+    height: 80px;
+}
+
+.map .img {
+    width: 106px;
+    height: 80px;
+}
+
+.map .content {
+    overflow: hidden;
+    line-height: 22px;
+    padding-left: 12px;
+}
+
+.map .title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #394043;
+}
+
+.map .desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #afb2b3;
+}
+
+.map .price {
+    font-size: 12px;
+    color: #fa5741;
+}
+
+.map .priceNum {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.map .tag {
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 4px 5px;
+    margin-right: 5px;
+    line-height: 12px;
+}
+
+.map .tag1 {
+    color: #39becd;
+    background: #e1f5f8;
+}
+
+.map .tag2 {
+    color: #3fc28c;
+    background: #e1f5ed;
+}
+
+.map .tag3 {
+    color: #5aabfd;
+    background: #e6f2ff;
+}
+
+.titleWrap {
+    position: relative;
+    width: 100%;
+    background: #c0c0c2;
+    border-top: 1px solid #c8c8c8;
+}
+
+.map .listTitle {
+    display: inline-block;
+    padding-left: 10px;
+    line-height: 43px;
+    font-size: 16px;
+    color: #1e1e1e;
+    vertical-align: middle;
+}
+
+.titleMore {
+    float: right;
+    padding-right: 15px;
+    line-height: 43px;
+    font-size: 13px;
+    color: #1e1e1e;
+    vertical-align: middle;
+}
+
+.titleMore:visited {
+    text-decoration: none;
+}
