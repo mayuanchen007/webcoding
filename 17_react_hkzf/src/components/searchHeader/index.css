@@ -1,0 +1,55 @@
+/* 顶部导航栏设置 */
+
+.am-carousel {
+    position: relative;
+}
+
+.search-box {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    width: 350px;
+}
+
+.search {
+    background-color: #fff;
+    height: 30px;
+    width: 320px;
+    border-radius: 2px;
+    line-height: 30px;
+}
+
+.search .name {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+.search .icon-arrow {
+    font-size: 5px;
+}
+
+.search .form {
+    border-left: 1px solid gray;
+    margin-left: 15px;
+    padding-left: 10px;
+    float: left;
+    width: 200px;
+}
+
+.icon-seach {
+    vertical-align: middle;
+    padding: 0 2px 0 12px;
+    color: #9c9fa1;
+    font-size: 15px;
+}
+
+.text {
+    padding-left: 4px;
+    font-size: 13px;
+    color: #9c9fa1;
+}
+
+.icon-map {
+    margin-left: 8px;
+    color: #fff;
+}

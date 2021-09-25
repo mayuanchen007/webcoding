@@ -1,0 +1,24 @@
+.house {
+    background-color: #ccc;
+    height: 45px;
+    padding: 0 10px;
+}
+
+.house .house-header {
+    height: 45px;
+    width: 100%;
+}
+
+.house .search-box {
+    position: relative;
+    top: 0;
+    left: 0px;
+    padding: 0;
+}
+
+.house .icon-back {
+    position: relative;
+    left: -4px;
+    top: 5px;
+    height: 30px;
+}
