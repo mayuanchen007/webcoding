@@ -1,0 +1,13 @@
+.filter_title {
+    width: 100%;
+    height: 45px;
+    border-bottom: gainsboro 1px solid;
+}
+
+.filter_title .select span {
+    color: rgb(109, 18, 18);
+}
+
+.filter_title .select i {
+    color: rgb(109, 18, 18);
+}

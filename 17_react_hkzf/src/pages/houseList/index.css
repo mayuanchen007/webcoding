@@ -1,12 +1,18 @@
 .house {
     background-color: #ccc;
-    height: 45px;
-    padding: 0 10px;
+    height: 450px;
+}
+
+.house .house-h {
+    position: relative;
+    z-index: 3;
+    background-color: rgb(194, 194, 194);
 }
 
 .house .house-header {
     height: 45px;
     width: 100%;
+    padding: 0 10px;
 }
 
 .house .search-box {
