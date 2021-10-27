@@ -10,14 +10,12 @@ const titleList=[
 ]
  class FilterTitle extends React.Component{
     render(){
-        console.log(this.props)
         return (
             <div className='filter_title'>
                 <Flex>
                     {
                         titleList.map((item,index)=>{
                             const seleteFlag=this.props.titleSelect[item.type];
-                            console.log(seleteFlag)
                             return (
                                 <Flex.Item key={index} className={seleteFlag?'select':''}  onClick={()=>{this.props.onTitleclick(item.type)}}>
                                     <span>{item.title}</span>

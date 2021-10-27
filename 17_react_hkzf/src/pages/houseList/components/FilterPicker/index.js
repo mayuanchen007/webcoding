@@ -2,17 +2,19 @@ import React from "react";
 import {PickerView } from 'antd-mobile'
 import FilerFooter from '../../../../components/FilerFooter/index'
 import './index.css'
-const columns = [
-    ['1', '2', '3'],
-    ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']   
-  ]
+
 
 export default class FilerPicker extends React.Component{
+    state={
+        value:this.props.defaultValues
+    }
     render(){
+        const {onCanel,onConfrim,data,cols,type}=this.props;
+        const {value}=this.state;
         return (
             <div className='filer_picker'>
-                <PickerView columns={columns} />        
-                <FilerFooter></FilerFooter>        
+                <PickerView data={data} value={value} cols={cols} onChange={val => {  this.setState({  value: val }) }} />    
+                <FilerFooter onCanel={onCanel} onConfrim={()=>{onConfrim(type,value)}}></FilerFooter>        
             </div>
         )
     }
