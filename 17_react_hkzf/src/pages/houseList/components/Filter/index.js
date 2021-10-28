@@ -27,17 +27,50 @@ export default class Filter extends React.Component{
     componentDidMount(){
        this.getFilterData();
     }
+    //点击标题栏
     onTitleclick=(type)=>{
+        const selectDefaultValues=this.state.selectDefaultValues;
+        const newTitleSelect={...this.state.titleSelect}
+        Object.keys(this.state.titleSelect).forEach(item=>{
+            //当前标题
+            if(item===type)
+            {
+                newTitleSelect[type]=true;
+                return;
+            }
+            //其他标题
+            const selectVal=selectDefaultValues[item];
+            if(item==='area'&&(selectVal.length!==2||selectVal[0]!=='area'))
+            {
+                newTitleSelect[item]=true
+            }
+            else if(item==='mode'&&selectVal[0]!=='null')
+            {
+                newTitleSelect[item]=true
+            }
+            else if(item==='price'&&selectVal[0]!=='null')
+            {
+                newTitleSelect[item]=true
+            }
+            else if(item==='more')
+            {
+            }
+            else{
+                newTitleSelect[item]=false
+            }
+        })
         this.setState({
-        titleSelect:{...this.state.titleSelect,[type]:true},
+        titleSelect:newTitleSelect,
         type:type
         })
     }
+    //点击取消
     onCanel=()=>{
         this.setState({
             type:''
         })
     }
+    //点击确定
     onSave=(type,value)=>{
         console.log(this.state.selectDefaultValues)
         this.setState({
@@ -48,6 +81,7 @@ export default class Filter extends React.Component{
             }
         });
     }
+    //获取选择框数据
     async getFilterData()
     {
       const cityId=JSON.parse(window.localStorage.getItem('cur-city'));
@@ -56,6 +90,7 @@ export default class Filter extends React.Component{
           filterData:data.body
       })
     }
+    //渲染选择框
     renderFilterPicker()
     {
         
@@ -86,6 +121,7 @@ export default class Filter extends React.Component{
         }
         return (<FilterPicker onCanel={this.onCanel} data={data} cols={cols} type={type} onConfrim={this.onSave} defaultValues={defaultValues} key={type}></FilterPicker>)
     }
+
     render(){
        
         return(
