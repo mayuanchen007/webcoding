@@ -61,8 +61,15 @@ export default class Filter extends React.Component{
         })
         this.setState({
         titleSelect:newTitleSelect,
-        type:type
+        type
         })
+        if(type==='more')
+        {
+            this.setState({
+                type:'more'
+                })
+        }
+        console.log(this.state.type,type)
     }
     //点击取消
     onCanel=()=>{
@@ -81,7 +88,7 @@ export default class Filter extends React.Component{
             }
         });
     }
-    //获取选择框数据
+    //获取数据
     async getFilterData()
     {
       const cityId=JSON.parse(window.localStorage.getItem('cur-city'));
@@ -122,21 +129,45 @@ export default class Filter extends React.Component{
         return (<FilterPicker onCanel={this.onCanel} data={data} cols={cols} type={type} onConfrim={this.onSave} defaultValues={defaultValues} key={type}></FilterPicker>)
     }
 
+    //渲染更多
+    renderFilterMore()
+    {
+        const {type,filterData}=this.state;
+        const {roomType,oriented,floor,characteristic}=filterData
+        if(type!=='more')
+        {
+            return null;
+        }
+        return (<FilterMore onCanel={this.onCanel} roomType={roomType} oriented={oriented} floor={floor} characteristic={characteristic}></FilterMore>)
+    }
+
+    // 渲染遮挡层
+    renderMask()
+    {
+        if(!this.state.type)
+        {
+            return null
+        }
+        if(this.state.type==='more'){
+            return (<div className='mask'></div>)
+        }else{
+            return (<div className='mask1'></div>)
+        }
+        return null;
+    }
     render(){
        
         return(
             <div className='houselist_title'>
                 {/* 遮罩层 */}
-                {
-                    this.state.type==='area'|| this.state.type==='mode'|| this.state.type==='price'?( <div className='mask'></div>):(<div/>)
-                }  
+                { this.renderMask()}  
                 <div className='content'>
                     {/* 标题栏 */}
                     <FilterTitle titleSelect={this.state.titleSelect} onTitleclick={this.onTitleclick}></FilterTitle>
                     {/* 选择框 */}
                     { this.renderFilterPicker()}
-                   
-                    <FilterMore></FilterMore>
+                    {/* 更多 */}
+                    {this.renderFilterMore()}
                 </div>
             </div>
         )

@@ -14,7 +14,7 @@ export default class FilerPicker extends React.Component{
         return (
             <div className='filer_picker'>
                 <PickerView data={data} value={value} cols={cols} onChange={val => {  this.setState({  value: val }) }} />    
-                <FilerFooter onCanel={onCanel} onConfrim={()=>{onConfrim(type,value)}}></FilerFooter>        
+                <FilerFooter onCanel={onCanel} onConfrim={()=>{onConfrim(type,value)} } classname={'filer_footer'}></FilerFooter>        
             </div>
         )
     }

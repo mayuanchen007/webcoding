@@ -1,0 +1,74 @@
+.houselist_filterMore {
+    position: relative;
+    z-index: 5;
+}
+
+.tags {
+    position: fixed;
+    justify-content: space-between;
+    top: 0;
+    left: 80px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    padding-bottom: 50px;
+    z-index: 5;
+    background-color: #fff;
+}
+
+.tag {
+    display: inline-block;
+    height: 38px;
+    width: 70px;
+    margin: 0 14px 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    line-height: 32px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+}
+
+.tagActive {
+    border: 1px solid #21b97a;
+    color: #21b97a;
+    background-color: #defaef;
+}
+
+.dl {
+    justify-content: space-between;
+    padding: 0 15px;
+    border-bottom: 1px #defaef solid;
+}
+
+.dt {
+    text-align: left;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.dd {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 14px;
+}
+
+.dd div {
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
+}
+
+.dd:last-child {
+    border-bottom: 0;
+}
+
+.houselist_filterMore .filer_footer {
+    position: fixed;
+    width: auto;
+    left: 80px;
+    z-index: 5;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+}
