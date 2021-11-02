@@ -1,0 +1,91 @@
+.houseItem {
+    height: 120px;
+    position: relative;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding-top: 18px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.houseItem .content .imgWrap {
+    float: left;
+    width: 106px;
+    height: 80px;
+}
+
+.houseItem .content .img {
+    width: 106px;
+    height: 80px;
+}
+
+.houseItem .content {
+    overflow: hidden;
+    line-height: 22px;
+    padding-left: 12px;
+}
+
+.houseItem .context {
+    line-height: 22px;
+    padding-left: 123px;
+}
+
+.houseItem .title {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 15px;
+    color: #394043;
+}
+
+.houseItem .desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-size: 12px;
+    color: #afb2b3;
+}
+
+.houseItem .price {
+    font-size: 12px;
+    color: #fa5741;
+}
+
+.houseItem .priceNum {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.houseItem .houseItem_tag {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 4px 5px;
+    margin-right: 5px;
+    line-height: 12px;
+}
+
+.houseItem .houseItem_tag1 {
+    color: #39becd;
+    background: #e1f5f8;
+}
+
+.houseItem .houseItem_tag2 {
+    color: #3fc28c;
+    background: #e1f5ed;
+}
+
+.houseItem .houseItem_tag3 {
+    color: #5aabfd;
+    background: #e6f2ff;
+}
+
+.houseItem .houseItem_tag4 {
+    color: red;
+    background: #80f513;
+}

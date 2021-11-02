@@ -1,5 +1,5 @@
 .house {
-    background-color: #ccc;
+    background-color: #fff;
     height: 100%;
 }
 
@@ -27,4 +27,11 @@
     left: -4px;
     top: 5px;
     height: 30px;
+}
+
+.house .replaceDiv {
+    line-height: 120px;
+    text-align: center;
+    height: 110px;
+    background-color: #f6f5f6;
 }

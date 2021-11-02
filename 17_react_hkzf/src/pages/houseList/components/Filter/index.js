@@ -21,12 +21,14 @@ export default class Filter extends React.Component{
             mode:['null'],
             price:['null'],
             more:''
-        }
+        },
+        selectValues:{}
     }
     //
     componentDidMount(){
        this.getFilterData();
     }
+
     //点击标题栏
     onTitleclick=(type)=>{
         const selectDefaultValues=this.state.selectDefaultValues;
@@ -52,8 +54,10 @@ export default class Filter extends React.Component{
             {
                 newTitleSelect[item]=true
             }
-            else if(item==='more')
+            else if(item==='more'&&selectVal.length>0)
             {
+                console.log(selectVal.length)
+                newTitleSelect[item]=true
             }
             else{
                 newTitleSelect[item]=false
@@ -69,24 +73,74 @@ export default class Filter extends React.Component{
                 type:'more'
                 })
         }
-        console.log(this.state.type,type)
     }
+
     //点击取消
     onCanel=()=>{
         this.setState({
             type:''
         })
     }
+
     //点击确定
     onSave=(type,value)=>{
-        console.log(this.state.selectDefaultValues)
+        const selectDefaultValues=this.state.selectDefaultValues;
+        const newTitleSelect={...this.state.titleSelect}
+        Object.keys(this.state.titleSelect).forEach(item=>{
+            //其他标题
+            const selectVal=selectDefaultValues[item];
+            if(item==='area'&&(selectVal.length!==2||selectVal[0]!=='area'))
+            {
+
+                newTitleSelect[item]=true
+            }
+            else if(item==='mode'&&selectVal[0]!=='null')
+            {
+                newTitleSelect[item]=true
+            }
+            else if(item==='price'&&selectVal[0]!=='null')
+            {
+                newTitleSelect[item]=true
+            }
+            else if(item==='more'&&selectVal.length>0)
+            {
+                console.log(selectVal.length)
+                newTitleSelect[item]=true
+            }
+            else{
+                newTitleSelect[item]=false
+            }
+        })
+        const newselectDefaultValues={...this.state.selectDefaultValues}
+        newselectDefaultValues[type]=value;
+
+        //封装查询数据
+        const filterDate={};
+        // 区域
+        const areaKey = newselectDefaultValues.area[0]
+        let areaValue = 'null'
+        const {area}=newselectDefaultValues;
+        if (newselectDefaultValues.area.length === 3) {
+        areaValue = area[2] !== 'null' ? area[2] : area[1]
+        }
+        filterDate[areaKey] = areaValue      
+        filterDate.price=newselectDefaultValues.price[0];
+        filterDate.mode=newselectDefaultValues.mode[0];
+        if(newselectDefaultValues.more)
+        {
+            filterDate.more=newselectDefaultValues.more.join(',');
+        }
+       
+        console.log(filterDate)
+        this.props.getFilterData(filterDate);
         this.setState({
             type:'',
-            selectDefaultValues:{
-                ...this.state.selectDefaultValues,
-                [type]:value
-            }
+            titleSelect:newTitleSelect,
+            selectDefaultValues:newselectDefaultValues
         });
+        this.setState({
+            selectValues:newselectDefaultValues
+        })
     }
     //获取数据
     async getFilterData()
@@ -132,13 +186,13 @@ export default class Filter extends React.Component{
     //渲染更多
     renderFilterMore()
     {
-        const {type,filterData}=this.state;
+        const {type,filterData,selectDefaultValues}=this.state;
         const {roomType,oriented,floor,characteristic}=filterData
         if(type!=='more')
         {
             return null;
         }
-        return (<FilterMore onCanel={this.onCanel} roomType={roomType} oriented={oriented} floor={floor} characteristic={characteristic}></FilterMore>)
+        return (<FilterMore onConfrim={this.onSave} type={type} selectValues={selectDefaultValues.more} roomType={roomType} oriented={oriented} floor={floor} characteristic={characteristic}></FilterMore>)
     }
 
     // 渲染遮挡层
@@ -149,12 +203,13 @@ export default class Filter extends React.Component{
             return null
         }
         if(this.state.type==='more'){
-            return (<div className='mask'></div>)
+            return (<div className='mask' onClick={this.onCanel}></div>)
         }else{
-            return (<div className='mask1'></div>)
+            return (<div className='mask1' onClick={this.onCanel}></div>)
         }
         return null;
     }
+    
     render(){
        
         return(
