@@ -7,6 +7,7 @@ import {API} from '../../utils/api'
 import {List , WindowScroller ,AutoSizer,InfiniteLoader} from 'react-virtualized'
 import HouseItem from '../../components/houseItem'
 import {BASE_URL} from '../../utils/urlUtil'
+import Stick from '../../components/Stick/index'
 const city= window.localStorage.getItem('cur-city');
 export default class HouseList extends React.Component{
     state={
@@ -142,7 +143,10 @@ export default class HouseList extends React.Component{
                 </Flex>
             </div>
             {/* 渲染头部菜单 */}
-            <Filter getFilterData={this.getFilterData}></Filter>
+            <Stick height={45}>
+                <Filter getFilterData={this.getFilterData}></Filter>
+            </Stick>
+           
             {/* 渲染访问列表 */}
             <div>{this.renderHouseList()}</div>
         </div>

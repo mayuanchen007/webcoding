@@ -198,13 +198,16 @@ export default class Filter extends React.Component{
     // 渲染遮挡层
     renderMask()
     {
+        console.log(this.state.type)
         if(!this.state.type)
         {
             return null
         }
         if(this.state.type==='more'){
+            console.log(this.state.type,1)
             return (<div className='mask' onClick={this.onCanel}></div>)
         }else{
+            console.log(this.state.type,2)
             return (<div className='mask1' onClick={this.onCanel}></div>)
         }
         return null;

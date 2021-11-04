@@ -28,7 +28,7 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.houselist_title .mask {
+.houselist_title .mask1 {
     position: fixed;
     z-index: 3;
     left: 0;
