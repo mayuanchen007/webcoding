@@ -1,0 +1,21 @@
+.HousePackage ul {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    background: #fff;
+    list-style: none;
+}
+
+.HousePackage .item {
+    margin: 10px 0;
+    width: 20%;
+    line-height: 23px;
+}
+
+.HousePackage .active {
+    color: #21b97a;
+}
+
+.HousePackage .icon {
+    font-size: 23px;
+}

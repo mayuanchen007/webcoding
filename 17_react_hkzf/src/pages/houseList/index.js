@@ -9,6 +9,8 @@ import HouseItem from '../../components/houseItem'
 import {BASE_URL} from '../../utils/urlUtil'
 import Stick from '../../components/Stick/index'
 const city= window.localStorage.getItem('cur-city');
+import {Toast} from 'antd-mobile'
+
 export default class HouseList extends React.Component{
     state={
         houseList:[],
@@ -24,6 +26,7 @@ export default class HouseList extends React.Component{
 
     async searchHouseList()
     {
+        Toast.loading("房屋加载中。。。。", 0, null, true)
         const city=JSON.parse(window.localStorage.getItem('cur-city'))[1];
         console.log(city)
         const {data}=await API.get('/houses',{
@@ -38,6 +41,8 @@ export default class HouseList extends React.Component{
             houseList:data.body.list,
             count:data.body.count
         })
+        Toast.hide()
+        Toast.info(`共找到${this.state.count}套房源`, 2);
     }
 
 
@@ -52,7 +57,7 @@ export default class HouseList extends React.Component{
                     start:startIndex,
                     end:endIndex
                 }
-            }).then((res)=>{
+            } ).then((res)=>{
                 this.setState({
                     houseList:[...this.state.houseList,...res.data.body.list]
                 });
@@ -122,7 +127,11 @@ export default class HouseList extends React.Component{
         if(house)
         {
             return (
-                <HouseItem key={key} src={BASE_URL+house.houseImg} title={house.title} desc={house.desc} tags={house.tags} price={house.price}  style={style}></HouseItem>
+                <HouseItem 
+                onClick={() => this.props.history.push(`/houseDetail/${house.houseCode}`)}
+                key={key} src={BASE_URL+house.houseImg} 
+                title={house.title} desc={house.desc} 
+                tags={house.tags} price={house.price}  style={style}></HouseItem>
             );
         }
         else{

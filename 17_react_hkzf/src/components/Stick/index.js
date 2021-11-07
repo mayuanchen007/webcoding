@@ -29,7 +29,7 @@ export default class Stick extends Component {
     }
 
     componentWillUnmount(){
-        window.removeEventListener('scroll');
+        window.removeEventListener('scroll',this.handleScroll);
     }
 
     render()

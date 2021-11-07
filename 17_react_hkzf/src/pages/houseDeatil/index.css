@@ -1,0 +1,250 @@
+.house_detail {
+    width: 100%;
+    height: 100%;
+}
+
+.house_detail .title {
+    width: 100%;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.house_detail .title .title_span {
+    width: 100%;
+    display: inline-block;
+    font-size: 20px;
+}
+
+.house_detail .houseItem_tag {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 4px 5px;
+    margin-right: 5px;
+    line-height: 12px;
+}
+
+.house_detail .houseItem_tag1 {
+    color: #39becd;
+    background: #e1f5f8;
+}
+
+.house_detail .houseItem_tag2 {
+    color: #3fc28c;
+    background: #e1f5ed;
+}
+
+.house_detail .houseItem_tag3 {
+    color: #5aabfd;
+    background: #e6f2ff;
+}
+
+.house_detail .houseItem_tag4 {
+    color: red;
+    background: #80f513;
+}
+
+.house_detail .title_tag {
+    margin-top: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+
+.house_detail .info {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px;
+}
+
+.house_detail .info div {
+    padding: 20;
+}
+
+.house_detail .info div span {
+    display: block;
+    text-align: center;
+}
+
+.house_detail .info div .info_content {
+    color: orange;
+    font-size: 15px;
+    margin-bottom: 7px;
+    font-weight: 900;
+}
+
+.house_detail .info div .info_title {
+    color: #b3acac;
+    font-size: 12px;
+}
+
+.house_detail .info2 {
+    width: 100%;
+    padding: 15px 0;
+}
+
+.house_detail .info2 .info2_item {
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+}
+
+.house_detail .info2 .info2_item div {
+    width: 50%;
+}
+
+.house_detail .info2 .info2_item div .info_title {
+    color: #b3acac;
+}
+
+.house_detail .map {
+    padding-top: 10px;
+    height: auto;
+}
+
+.house_detail .map #container {
+    width: 100%;
+    height: 200px;
+}
+
+.house_detail .peitao {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    color: #394043;
+    background-color: #fff;
+}
+
+.house_detail .peitao .peitao_title {
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.house_detail .fwgk {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    color: #394043;
+    background-color: #fff;
+}
+
+.house_detail .fwgk .peitao_fwgk {
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.house_detail .fwgk p {
+    line-height: 1.6;
+    padding: 10px 0;
+    color: #333;
+}
+
+.house_detail .fwgk .contact {
+    position: relative;
+}
+
+.house_detail .fwgk .user_contact {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.house_detail .fwgk .user_contact img {
+    width: 52px;
+    height: 52px;
+    margin: 10px 10px 0 0;
+}
+
+.house_detail .fwgk .useInfo {
+    padding: 15px 0 0 5px;
+}
+
+.house_detail .fwgk .userAuth {
+    font-size: 12px;
+    color: #fa5741;
+}
+
+.house_detail .fwgk .userAuth .icon-auth {
+    margin-right: 5px;
+}
+
+.house_detail .fwgk .userMsg {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    color: #33be85;
+    border: solid 1px #33be85;
+    border-radius: 3px;
+    padding: 3px 15px;
+}
+
+.house_detail .nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    color: #fff;
+}
+
+.house_detail .am-navbar-light {
+    background-color: transparent;
+}
+
+.house_detail .nav .am-navbar-title {
+    color: #fff;
+}
+
+.house_detail .descText {
+    line-height: 1.6;
+    padding: 10px 0;
+    color: #333;
+}
+
+.house_detail .recommend {
+    margin: 10px 0 0 0;
+    padding: 0 15px;
+    background: #fff;
+}
+
+.house_detail .items :global(div:last-child) {
+    border-bottom: 0;
+}
+
+.house_detail .fixedBottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border-top: 1px solid #cecece;
+    text-align: center;
+    font-size: 17px;
+    color: #999;
+    background-color: #fff;
+}
+
+.house_detail .favorite {
+    margin-left: 6px;
+}
+
+.house_detail .favoriteImg {
+    width: 16px;
+}
+
+.house_detail .fixedBottom div:first-child {
+    border-right: solid 1px #e8e8e9;
+}
+
+.house_detail .fixedBottom div:last-child {
+    border-right: solid 1px #e8e8e9;
+    background-color: #21b97a;
+}
+
+.house_detail .telephone {
+    color: #fff;
+}

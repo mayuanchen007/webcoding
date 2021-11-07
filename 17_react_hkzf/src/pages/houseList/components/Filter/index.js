@@ -3,7 +3,9 @@ import FilterMore from '../FilterMore/index'
 import FilterPicker from '../FilterPicker/index'
 import FilterTitle from '../FilterTitle/index'
 import {API} from '../../../../utils/api'
+
 import './index.css'
+
 
 const titleSelect={
     area:false,
@@ -80,6 +82,7 @@ export default class Filter extends React.Component{
         this.setState({
             type:''
         })
+        window.scroll(0,0)
     }
 
     //点击确定
@@ -141,6 +144,7 @@ export default class Filter extends React.Component{
         this.setState({
             selectValues:newselectDefaultValues
         })
+        window.scroll(0,0)
     }
     //获取数据
     async getFilterData()
@@ -198,18 +202,20 @@ export default class Filter extends React.Component{
     // 渲染遮挡层
     renderMask()
     {
+    
         console.log(this.state.type)
-        if(!this.state.type)
+        if(this.state.type)
         {
-            return null
+            if(this.state.type==='more'){
+                return (
+                    <div className='mask'  onClick={this.onCanel}></div>
+               )
+            }else{
+                return (<div className='mask1' onClick={this.onCanel}></div>)
+            }
+
         }
-        if(this.state.type==='more'){
-            console.log(this.state.type,1)
-            return (<div className='mask' onClick={this.onCanel}></div>)
-        }else{
-            console.log(this.state.type,2)
-            return (<div className='mask1' onClick={this.onCanel}></div>)
-        }
+       
         return null;
     }
     

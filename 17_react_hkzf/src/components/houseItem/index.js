@@ -1,7 +1,7 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
-
+import {withRouter} from 'react-router-dom'
 import styles from './index.css'
 
 function HouseItem({ src, title, desc, tags, price, onClick, style }) {
@@ -46,4 +46,4 @@ HouseItem.propTypes = {
   onClick: PropTypes.func
 }
 
-export default HouseItem
+export default withRouter(HouseItem)

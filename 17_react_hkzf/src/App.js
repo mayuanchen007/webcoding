@@ -5,6 +5,7 @@ import './App.css';
 import Home from './pages/home/index'
 import CityList from './pages/cityList/index'
 import Map from './pages/map/index'
+import houseDetail from './pages/houseDeatil/index'
 class App extends Component{
     render(){
         return (<Router>
@@ -13,6 +14,7 @@ class App extends Component{
                     <Route path='/cityList' component={CityList}></Route>
                     <Route path='/home' component={Home}></Route>
                     <Route exact path='/map' component={Map}></Route>
+                    <Route exact path='/houseDetail/:id' component={houseDetail}></Route>
                 </div>
             </Router>);
     }
