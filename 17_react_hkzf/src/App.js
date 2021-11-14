@@ -6,6 +6,7 @@ import Home from './pages/home/index'
 import CityList from './pages/cityList/index'
 import Map from './pages/map/index'
 import houseDetail from './pages/houseDeatil/index'
+import Login from './pages/login/index'
 class App extends Component{
     render(){
         return (<Router>
@@ -15,6 +16,7 @@ class App extends Component{
                     <Route path='/home' component={Home}></Route>
                     <Route exact path='/map' component={Map}></Route>
                     <Route exact path='/houseDetail/:id' component={houseDetail}></Route>
+                    <Route exact path='/login' component={Login}></Route>
                 </div>
             </Router>);
     }

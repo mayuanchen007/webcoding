@@ -10,6 +10,7 @@
     "eslint": "^7.32.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-react": "^7.24.0",
+    "formik": "^2.2.9",
     "node-scss": "^7.0.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -17,7 +18,8 @@
     "react-router-dom": "^5.2.0",
     "react-spring": "^9.1.2",
     "react-virtualized": "^9.22.3",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",

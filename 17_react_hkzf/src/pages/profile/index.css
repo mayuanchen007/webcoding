@@ -1,0 +1,144 @@
+.profile {
+    background-color: #fff;
+    position: relative;
+    height: 100%;
+}
+
+.profile .profile_title {
+    min-height: 300px;
+    position: relative;
+}
+
+.profile .bg {
+    width: 100%;
+}
+
+.profile .info {
+    position: absolute;
+    background: #fff;
+    width: 85%;
+    height: 55%;
+    bottom: 0px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 10px 3px #ddd;
+    margin: 50px auto 0;
+    padding: 0 20px;
+    padding-top: 0;
+    text-align: center;
+    font-size: 13px;
+}
+
+.profile .auth {
+    margin-bottom: 30px;
+}
+
+.profile .user {
+    padding-top: 15px;
+}
+
+.profile .myIcon {
+    position: relative;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: solid 5px #f5f5f5;
+    display: inline-block;
+    box-shadow: 0px 2px 2px #bdbdbd;
+}
+
+.profile .avatar {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.profile .name {
+    margin-top: -30px;
+    margin-bottom: 10px;
+}
+
+.profile .auth span {
+    border-radius: 30px;
+    color: #fff;
+    padding: 2px 15px;
+    background: #21b97a;
+    font-size: 12px;
+}
+
+.profile .edit {
+    color: #999;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
+.profile .edit .am-button-primary {
+    background-color: #21b97a;
+}
+
+.profile .arrow {
+    transform: rotate(-90deg);
+    display: inline-block;
+    margin-left: 3px;
+}
+
+.profile .arrow .icon-arrow {
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.profile .ad {
+    position: absolute;
+    bottom: 170px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.profile .ad img {
+    width: 92%;
+}
+
+.ui.modal>.actions {
+    text-align: center;
+}
+
+.ui.modal>.content {
+    text-align: center;
+}
+
+.ui.modal>.content .avatar-zoom {
+    color: #000;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-bottom: 2px;
+    font-size: 18px;
+}
+
+.profile .menuItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 13px;
+    color: #333;
+}
+
+.profile .am-grid-square {
+    margin-top: 20px;
+}
+
+.profile .menuItem i {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.profile .am-grid.am-grid-square .am-grid-item:before {
+    padding-bottom: 76%;
+}
+
+.profile .am-grid .am-flexbox {
+    background-color: inherit;
+}

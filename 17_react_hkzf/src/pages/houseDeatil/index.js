@@ -4,7 +4,7 @@ import {BASE_URL} from '../../utils/urlUtil'
 import {Carousel} from 'antd-mobile'
 import './index.css'
 import HousePackage from '../../components/HousePackage/index'
-import { NavBar, Icon,Flex } from 'antd-mobile';
+import { NavBar, Icon,Flex,Modal } from 'antd-mobile';
 export default class HouseDeatil extends React.Component{
 
     state={
@@ -24,7 +24,8 @@ export default class HouseDeatil extends React.Component{
             supporting:[],
             description:'',
             imgHeight:''
-        }
+        },
+        ifLogin:false
     }
      componentDidMount(){
          this.getHouseInfo();
@@ -165,6 +166,24 @@ export default class HouseDeatil extends React.Component{
             </div>
         )
     }
+
+
+    //收藏
+    handleFavorite=()=>{
+        if(!this.state.ifLogin){
+            return Modal.alert('提示', '登录后才能收藏房源，是否去登录?', [
+                { text: '取消' },
+                {
+                  text: '去登录',
+                  // 使用 replace 方法，解决登录后返回详情页面，再点击左上角返回按钮时
+                  // 需要点击两次的问题
+                  // onPress: () => history.push('/login', { from: location })
+                  onPress: () => this.props.history.push('/login')
+                }
+              ])
+        }
+    }
+
     render()
     {
         return (
@@ -201,7 +220,7 @@ export default class HouseDeatil extends React.Component{
                     >{this.state.house.community}</NavBar>
                 {/* 底部收藏按钮 */}
                 <Flex className='fixedBottom'>
-                <Flex.Item>
+                <Flex.Item onClick={this.handleFavorite}>
                     <img
                     src={BASE_URL + '/img/unstar.png'}
                     className='favoriteImg'
