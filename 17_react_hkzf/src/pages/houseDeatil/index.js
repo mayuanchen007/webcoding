@@ -25,12 +25,29 @@ export default class HouseDeatil extends React.Component{
             description:'',
             imgHeight:''
         },
-        ifLogin:false
+        ifLogin:false,
+        isFavorite:false
     }
      componentDidMount(){
          this.getHouseInfo();
-         
-     
+         this.checkIsFavorite();
+        
+    }
+
+    async checkIsFavorite()
+    {
+        const isLogin=window.localStorage.getItem('hkzf_token');
+        if(isLogin)
+        {
+            const {data}=await API.get(`/user/favorites/${this.props.match.params.id}`);
+            if(data.status===200)
+            {
+                this.setState({
+                    isFavorite:data.body.isFavorite
+                })
+            }
+
+        }
     }
 
     async getHouseInfo(){
@@ -38,7 +55,7 @@ export default class HouseDeatil extends React.Component{
         this.setState({
             house:data.body
         })
-       console.log(data);
+      
        this.renderMap();
     }
 
@@ -169,9 +186,11 @@ export default class HouseDeatil extends React.Component{
 
 
     //收藏
-    handleFavorite=()=>{
-        if(!this.state.ifLogin){
-            return Modal.alert('提示', '登录后才能收藏房源，是否去登录?', [
+     handleFavorite=async ()=>{
+         const id=this.props.match.params.id;
+         const token=window.localStorage.getItem('hkzf_token')
+        if(!token){
+            return Modal.alert('提示', '登录后才能收藏房源，是否去登录', [
                 { text: '取消' },
                 {
                   text: '去登录',
@@ -181,6 +200,28 @@ export default class HouseDeatil extends React.Component{
                   onPress: () => this.props.history.push('/login')
                 }
               ])
+        }
+        else{
+            if(this.state.isFavorite)//已收藏 点击取消收藏
+            {
+                const {data}=await API.delete(`/user/favorites/${id}`);
+                if(data.status===200)
+                {
+                    this.setState({
+                        isFavorite:false
+                    })
+                }
+                
+            }else//未收藏
+            {
+                const {data}=await API.post(`/user/favorites/${id}`);
+                if(data.status===200)
+                {
+                    this.setState({
+                        isFavorite:true
+                    })
+                }
+            }
         }
     }
 
@@ -222,7 +263,7 @@ export default class HouseDeatil extends React.Component{
                 <Flex className='fixedBottom'>
                 <Flex.Item onClick={this.handleFavorite}>
                     <img
-                    src={BASE_URL + '/img/unstar.png'}
+                    src={this.state.isFavorite?BASE_URL + '/img/star.png':BASE_URL + '/img/unstar.png'}
                     className='favoriteImg'
                     alt="收藏"
                     />

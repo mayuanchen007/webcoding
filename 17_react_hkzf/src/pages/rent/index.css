@@ -1,0 +1,22 @@
+.rent {
+    text-align: center;
+    background-color: #fff;
+    height: 100%;
+    position: relative;
+}
+
+.rent .rent-img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.rent .rent-img-msg {
+    color: #666;
+}
+
+.rent .am-button {
+    position: absolute !important;
+    right: 10px;
+    top: 7px;
+    width: 90px;
+}
