@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 Vue.config.productionTip = false
 
-import TypeNav from '@/pages/Home/TypeNav'
+import TypeNav from '@/components/TypeNav/index'
 Vue.component(TypeNav.name, TypeNav);
 
 new Vue({

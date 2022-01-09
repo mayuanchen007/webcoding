@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="uploadform" method="post" enctype="multipart/form-data">
+        上传视频：<input type="file" id="file" name="file" onchange="uploadfile()" /> 进度：
+        <progress id="progressBar" value="0" max="100"></progress>
+        <span id="percentage"></span>
+    </form>
+</body>
+<script>
+    function uploadfile() {
+        var fileObj = document.getElementById("file").files[0]; // js 获取文件对象
+        var FileController = "teacher/uploadvideo.action"; // 接收上传文件的后台地址 
+
+        // FormData 对象
+        var form = new FormData($("#uploadform")[0]);
+
+        // XMLHttpRequest 对象
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", FileController, true);
+        xhr.onload = function() {
+            // alert("上传完成!");
+        };
+
+        xhr.upload.addEventListener("progress", progressFunction, false);
+        xhr.send(form);
+    }
+</script>
+
+</html>
